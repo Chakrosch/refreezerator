@@ -1,5 +1,5 @@
 Skip to content
-Search or jump to…
+Search or jump toï¿½
 
 Pull requests
 Issues
@@ -8,14 +8,14 @@ Explore
  
 @Chakrosch 
 Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+Using the Hello World guide, youï¿½ll start a branch, write comments, and open a pull request.
 
 
 2.9k
 92.5k47.6kgithub/gitignore
  Code Pull requests 121 Actions Projects 0 Security Insights
 gitignore/Unity.gitignore
-@helioseven helioseven Modified comment on Asset meta data ignore to better explain usage. (#…
+@helioseven helioseven Modified comment on Asset meta data ignore to better explain usage. (#ï¿½
 e2e54ce 9 days ago
 @mviranyi@theDrake@Tandoori@shana@qCring@LucasSteer@Frozenfire92@ahmyi@FutureClemens@shiftkey@ahmedbaracat@matzar@rogersachan@tim-hub@taeminhong@rpistorello@1nfinite9@owenblacker@mariuz@LotteMakesStuff@ksmit799@jstasiak@kilian442@jrreed@heatblayze@johnsoncodehk
 60 lines (49 sloc)  1020 Bytes
@@ -80,7 +80,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-© 2019 GitHub, Inc.
+ï¿½ 2019 GitHub, Inc.
 Terms
 Privacy
 Security
@@ -92,3 +92,4 @@ API
 Training
 Blog
 About
+Refreezerator/Refreezerator/Temp/UnityLockfile
