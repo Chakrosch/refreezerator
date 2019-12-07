@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour
     public Slider slider;
     public Image currentItemImage;
 
-
+    
+    
+    
     void Update()
     {
         getInput();
