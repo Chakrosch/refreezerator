@@ -6,6 +6,7 @@ TagManager:
   tags:
   - vegetable
   - floor
+  - enemy
   layers:
   - Default
   - TransparentFX

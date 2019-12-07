@@ -5,8 +5,6 @@ using UnityEngine;
 public class Vegetable : PickUpObject
 {
 
-    private bool isFlying;
-    public float distance;
     public enum vegetables
     {
         carrot,
@@ -29,6 +27,7 @@ public class Vegetable : PickUpObject
     void Update()
     {
         base.setTemperature();
+        base.setFlying();
         if (temperature > 0)
         {
             var col = renderer.color;
@@ -42,22 +41,6 @@ public class Vegetable : PickUpObject
 
         }
 
-        if (isFlying)
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, distance))
-            {
-                if (hit.collider.tag == "floor")
-                {
-                    gameObject.layer = 8;
-                }
-            }
-        }
     }
 
-    public void throwVegetable()
-    {
-        gameObject.layer = 11;
-        isFlying = true;
-    }
 }
