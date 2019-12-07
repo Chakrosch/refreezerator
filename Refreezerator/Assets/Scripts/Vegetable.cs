@@ -27,6 +27,7 @@ public class Vegetable : PickUpObject
     void Update()
     {
         base.setTemperature();
+        base.setFlying();
         if (temperature > 0)
         {
             var col = renderer.color;
