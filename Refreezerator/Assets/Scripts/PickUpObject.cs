@@ -13,7 +13,7 @@ public class PickUpObject : MonoBehaviour
     public float maxFreezeTime;
     public float currentFreezeTime;
     public bool isFrozen;
-    public SpriteRenderer renderer;
+    public new SpriteRenderer renderer;
     public GameObject ice;
 
     private float distance = 0.6f;

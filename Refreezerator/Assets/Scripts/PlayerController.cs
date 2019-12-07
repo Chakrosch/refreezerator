@@ -19,10 +19,15 @@ public class PlayerController : MonoBehaviour
     public Vector3 lookingDirection;
     public EasterEgg easteregg;
     public KeyCode lastKey;
-    public Slider slider;
     public Image currentItemImage;
+    public icicleSlider slider;
 
+void Start(){
 
+	slider =  GameObject.Find("icicle").GetComponent<icicleSlider>();
+        currentItemImage = GameObject.Find("ItemSlot").GetComponent<Image>();
+	
+}
     void Update()
     {
         getInput();
@@ -173,7 +178,6 @@ public class PlayerController : MonoBehaviour
 		Home.resetVeggieCount();
 		SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 	}
-  [MenuItem("Tools/Write file")]
     static void WriteString()
     {
         string path = "Assets/highscore.txt";
