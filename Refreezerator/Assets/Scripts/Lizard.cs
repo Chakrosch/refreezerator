@@ -24,7 +24,12 @@ public class Lizard : MonoBehaviour
     {
         if (!stun.getStunned())
         {
-            if (countDown < 0)
+            
+            if (veggieNearby)
+            {
+                ChaseMove();
+            }
+            else if (countDown < 0)
             {
                 anim.SetTrigger("randomEarFlap");
                 countDown = Random.Range(3f, 10f);
@@ -32,16 +37,10 @@ public class Lizard : MonoBehaviour
             else
             {
                 countDown -= Time.deltaTime;
-            }
-
-            if (veggieNearby)
-            {
-                ChaseMove();
-            }
-            else
-            {
                 IdleMove();
             }
+
+            
         }
     }
 
