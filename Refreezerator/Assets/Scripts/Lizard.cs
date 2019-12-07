@@ -111,4 +111,8 @@ public class Lizard : MonoBehaviour
             isChased = null;
         }
     }
+void OnCollisionEnter(Collision collision){
+   if (collision.gameObject.tag == "Player"){
+PlayerController.GameOver();}
+}
 }
