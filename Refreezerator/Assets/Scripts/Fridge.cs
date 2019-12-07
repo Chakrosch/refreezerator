@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fridge : MonoBehaviour
 {
-    public FridgeObject currentObject;
+    public PickUpObject currentObject;
 
     public bool full;
 

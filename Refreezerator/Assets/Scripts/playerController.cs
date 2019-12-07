@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     private PickUpObject objectInRange;
     public Fridge fridge;
+    public float throwForce;
 
 
     void Update()
@@ -28,7 +29,14 @@ public class PlayerController : MonoBehaviour
         movement.z = Input.GetAxis("Vertical") * movementSpeed;
         if (Input.GetButtonDown("Interact"))
         {
-            pickUp();
+            if (fridge.currentObject != null)
+            {
+                throwOut();
+            }
+            else
+            {
+                pickUp();
+            }
         }
     }
 
@@ -60,53 +68,20 @@ public class PlayerController : MonoBehaviour
     {
         if (objectInRange != null)
         {
-            fridge.currentObject = objectInRange.type.ToString();
-            Destroy(objectInRange.gameObject);
+            fridge.currentObject = objectInRange;
             objectInRange = null;
+            fridge.currentObject.setInvisible(true);
+            fridge.currentObject.setRigidbody(false);
+            fridge.currentObject.transform.parent = transform;
+            fridge.currentObject.transform.position = Vector3.zero;
         }
     }
 
     private void throwOut()
     {
-
-
-        switch (fridge.currentObject.type)
-        {
-            case FridgeObject.fridgeObjectTypes.alcohol:
-                throwAlcohol();
-                break;
-            case FridgeObject.fridgeObjectTypes.enemy:
-                throwEnemy();
-                break;
-            case FridgeObject.fridgeObjectTypes.player:
-                break;
-            case FridgeObject.fridgeObjectTypes.vegetable:
-                throwVegetable();
-                break;
-        }
-    }
-
-    private void throwAlcohol()
-    {
-        for (int i = 0; i < PrefabManager.instance.alcohol.Length; i++)
-        {
-            if(PrefabManager.instance.alcohol[i].GetComponent<Alcohol>() != null)
-                if(PrefabManager.instance.alcohol[i].GetComponent<Alcohol>().name == fridge.currentObject.name)
-                {
-                    Instantiate(PrefabManager.instance.alcohol[i]);
-                    break;
-                }
-        }
+        fridge.currentObject.setInvisible(false);
+        fridge.currentObject.setRigidbody(true);
+        fridge.currentObject.rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         fridge.currentObject = null;
-    }
-
-    private void throwVegetable()
-    {
-
-    }
-
-    private void throwEnemy()
-    {
-
     }
 }

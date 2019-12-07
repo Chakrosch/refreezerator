@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PickUpObject : MonoBehaviour
 {
+    public Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,16 @@ public class PickUpObject : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void setInvisible(bool invisible)
+    {
+        GetComponent<MeshRenderer>().enabled = !invisible;
+    }
+
+    public void setRigidbody(bool on)
+    {
+        GetComponent<Collider>().enabled = on;
+        GetComponent<Rigidbody>().detectCollisions = on;
     }
 }

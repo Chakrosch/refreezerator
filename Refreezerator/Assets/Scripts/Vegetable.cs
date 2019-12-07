@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vegetable : pickUpObject
+public class Vegetable : PickUpObject
 {
     public enum vegetables
     {
