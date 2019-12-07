@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
   
 		SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 		WriteString();
-		//Home.resetVeggieCount();
+		Home.resetVeggieCount();
 	}
   [MenuItem("Tools/Write file")]
     static void WriteString()

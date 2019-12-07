@@ -24,7 +24,10 @@ public class Home : MonoBehaviour
         
     }
 
-    
+    public static void resetVeggieCount()
+    {
+        veggieCount = 0;
+    }
 
     private void OnCollisionEnter(Collision other)
     {
