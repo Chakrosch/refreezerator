@@ -39,6 +39,7 @@ e2e54ce 9 days ago
 /Refreezerator/[Ll]ogs/
 /Refreezerator/[Mm]emoryCaptures/
 
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
