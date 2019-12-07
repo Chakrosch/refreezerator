@@ -15,7 +15,7 @@ public class PickUpObject : MonoBehaviour
     public SpriteRenderer renderer;
     public GameObject ice;
 
-    public float distance = 0.1f;
+    private float distance = 0.6f;
 
     
     private bool isFlying;
@@ -33,28 +33,8 @@ public class PickUpObject : MonoBehaviour
     void Update()
     {
         setTemperature();
-        
-        if (isFlying)
-        {
-            RaycastHit hit;
-            Debug.DrawRay(transform.position, Vector3.down);
-            if (Physics.Raycast(transform.position, Vector3.down, out hit))
-            {
-                if (hit.collider.tag == "floor" && hit.distance < distance)
-                {    
-                    print("Back on floor");
-                    gameObject.layer = 8;
-                    isFlying = false;
-                } else if (hit.collider.tag == "enemy")
-                {
-                    Stun stun = hit.collider.GetComponent<Stun>();
-                    if (stun)
-                    {
-                        stun.stun();
-                    }
-                }
-            }
-        }
+
+        setFlying();
     }
 
     public void setInvisible(bool invisible)
@@ -114,6 +94,34 @@ public class PickUpObject : MonoBehaviour
         ice.transform.localRotation = Quaternion.Euler(45.0f, 0, 0);
     }
 
+
+    public void setFlying()
+    {
+        if (isFlying)
+        {
+            RaycastHit hit;
+            Debug.DrawRay(transform.position, Vector3.down, Color.blue, 0.2f);
+            if (Physics.Raycast(transform.position, Vector3.down, out hit))
+            {
+                print(hit.collider.gameObject.name);
+                print(hit.distance);
+                if (hit.collider.tag == "enemy")
+                {
+                    Stun stun = hit.collider.GetComponent<Stun>();
+                    if (stun)
+                    {
+                        stun.stun();
+                    }
+                }
+                else if (hit.collider.tag == "floor" && hit.distance < distance)
+                {
+                    print("Back on floor");
+                    gameObject.layer = 8;
+                    isFlying = false;
+                }
+            }
+        }
+    }
 
     public void setFreeze(bool freezed)
     {
