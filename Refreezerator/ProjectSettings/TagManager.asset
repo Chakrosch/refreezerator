@@ -6,7 +6,6 @@ TagManager:
   tags:
   - vegetable
   - floor
-  - enemy
   layers:
   - Default
   - TransparentFX
@@ -20,7 +19,7 @@ TagManager:
   - enemies
   - player
   - frozen
-  - PostProcessing
+  - 
   - 
   - 
   - 
