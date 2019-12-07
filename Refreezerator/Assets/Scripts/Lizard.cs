@@ -42,6 +42,7 @@ public class Lizard : MonoBehaviour
 
     void IdleMove()
     {
+        
         if (direction_change_timer >= 5f)
         {
             direction_change_timer = 0f;
