@@ -143,6 +143,11 @@ public class PlayerController : MonoBehaviour
         fridge.currentObject.transform.parent = null;
         fridge.currentObject.inFridge = false;
         fridge.currentObject.rb.AddForce(throwVec, ForceMode.Impulse);
+        if(fridge.currentObject.GetType() == typeof(Vegetable))
+        {
+            Vegetable x = (Vegetable)fridge.currentObject;
+            x.throwVegetable();
+        }
         fridge.currentObject = null;
     }
 }
