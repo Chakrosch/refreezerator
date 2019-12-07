@@ -23,6 +23,9 @@ public class Home : MonoBehaviour
         return veggieCount;
         
     }
+
+    
+
     private void OnCollisionEnter(Collision other)
     {
         Vegetable veggie = other.gameObject.GetComponent<Vegetable>();
