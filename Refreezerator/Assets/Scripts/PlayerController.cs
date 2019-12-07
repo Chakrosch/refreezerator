@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 [RequireComponent(typeof(Rigidbody))]
@@ -15,8 +16,9 @@ public class PlayerController : MonoBehaviour
     public float throwForce;
     public Vector3 lookingDirection;
     public EasterEgg easteregg;
-    private bool rightKeyCode;
     public KeyCode lastKey;
+    public Slider slider;
+    public Image currentItemImage;
 
 
     void Update()
@@ -29,6 +31,14 @@ public class PlayerController : MonoBehaviour
         }
         getDirection();
         checkEasterEgg();
+        if(fridge.currentObject != null)
+        {
+            slider.value = 1 - fridge.currentObject.temperature;
+        }
+        else
+        {
+            slider.value = 0;
+        }
     }
 
     /// <summary>
@@ -129,6 +139,10 @@ public class PlayerController : MonoBehaviour
             fridge.currentObject.transform.parent = transform;
             fridge.currentObject.transform.localPosition = Vector3.up;
             fridge.currentObject.inFridge = true;
+            Color c = currentItemImage.color;
+            c.a = 1;
+            currentItemImage.color = c;
+            currentItemImage.sprite = fridge.currentObject.renderer.sprite;
         }
     }
 
@@ -138,16 +152,16 @@ public class PlayerController : MonoBehaviour
         if (fridge.currentObject.isFrozen)
         {
             fridge.currentObject.setFreeze(true);
+            fridge.currentObject.throwObject();
         }
         fridge.currentObject.setRigidbody(true);
         fridge.currentObject.transform.parent = null;
         fridge.currentObject.inFridge = false;
         fridge.currentObject.rb.AddForce(throwVec, ForceMode.Impulse);
-        if(fridge.currentObject.GetType() == typeof(Vegetable))
-        {
-            Vegetable x = (Vegetable)fridge.currentObject;
-            x.throwVegetable();
-        }
+
         fridge.currentObject = null;
+        Color c = currentItemImage.color;
+        c.a = 0;
+        currentItemImage.color = c;
     }
 }

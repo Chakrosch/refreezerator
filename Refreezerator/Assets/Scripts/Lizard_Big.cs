@@ -25,7 +25,6 @@ void Update()
 updatePlayerDistance();
 if (playerNearby)
 {
-   
     ChaseMove();
 }
 else
@@ -45,13 +44,7 @@ void ChaseMove()
         ||Physics.Raycast(transform.position+new Vector3(0.5f,0,0), dir, 2, layerMask)
         ||Physics.Raycast(transform.position+new Vector3(0.5f,0,0), dir, 2, layerMask))
     {
-      //  Debug.Log("test");
-   //TODO AI     walkAround = true;
-    }
-    else
-    {
-        walkAround = false;
-    }
+     
 
     Vector3 movement = new Vector3(
         player.transform.position.x - this.transform.position.x,
