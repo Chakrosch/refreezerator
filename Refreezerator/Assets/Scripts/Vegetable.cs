@@ -22,15 +22,15 @@ public class Vegetable : PickUpObject
         if (temperature > 0)
         {
             Debug.Log("Vegtabletemp" + this.name + " " + temperature);
-            Debug.Log("color: " + gameObject.GetComponent<Renderer>().material.color.a);
-            var col = gameObject.GetComponent<Renderer> ().material.color;
+            Debug.Log("color: " + renderer.color.a);
+            var col = renderer.color;
             col.a = temperature;
-            this.GetComponent<MeshRenderer>().material.color = 
+            renderer.color = 
                 new Color(
-                    gameObject.GetComponent<Renderer>().material.color.r,
-                    gameObject.GetComponent<Renderer>().material.color.g,
-                    temperature,
-                    gameObject.GetComponent<Renderer>().material.color.a);
+                    temperature * 255,
+                    renderer.color.g,
+                    renderer.color.b,
+                    renderer.color.a);
 
         }
     }

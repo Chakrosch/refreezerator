@@ -11,6 +11,7 @@ public class PickUpObject : MonoBehaviour
     public float timeToChangeState;
     public float maxFreezeTime;
     public float currenFreezeTime;
+    public SpriteRenderer renderer;
     
 
 
@@ -28,7 +29,7 @@ public class PickUpObject : MonoBehaviour
 
     public void setInvisible(bool invisible)
     {
-        GetComponent<MeshRenderer>().enabled = !invisible;
+        renderer.enabled = !invisible;
     }
 
     public void setRigidbody(bool on)
