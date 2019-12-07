@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
+using UnityEditor;
+using System.IO;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -164,4 +166,23 @@ public class PlayerController : MonoBehaviour
         c.a = 0;
         currentItemImage.color = c;
     }
+	public void GameOver()
+	{
+  //Highscore mechanic; execute on player death or return to safety
+  
+		SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+		WriteString();
+		Home.resetVeggieCount();
+	}
+  [MenuItem("Tools/Write file")]
+    static void WriteString()
+    {
+        string path = "Assets/highscore.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine(Home.getVeggie()+";");
+        writer.Close();
+    }
+
 }

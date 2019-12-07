@@ -3,7 +3,7 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-		_PixelOffset("Pixel Offset", Range(-1, 1)) = 0.65
+		_PixelOffset("Pixel Offset", Range(-1, 1)) = 0.5
     }
     SubShader
     {
@@ -53,7 +53,7 @@
 				float2 pixelSize = cameraSize / gridSize;
 				
 				float2 uv = (i.uv * cameraSize) / pixelSize;
-				uv = (float2(int(uv.x), int(uv.y)) * pixelSize + _PixelOffset)/cameraSize;
+				uv = (float2(int(uv.x), int(uv.y)) * pixelSize + pixelSize * _PixelOffset)/cameraSize;
 				
                 return tex2D(_MainTex, uv);
             }
