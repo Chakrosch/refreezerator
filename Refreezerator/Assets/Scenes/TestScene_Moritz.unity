@@ -623,8 +623,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84f96b3264d4f94e891740fe55b9759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 1
   rb: {fileID: 1942218962}
+  fridge: {fileID: 0}
+  throwForce: 1
 --- !u!212 &1942218964
 SpriteRenderer:
   m_ObjectHideFlags: 0
