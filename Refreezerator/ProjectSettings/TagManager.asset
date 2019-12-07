@@ -14,10 +14,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - item
+  - enemies
+  - player
+  - frozen
   - 
   - 
   - 
