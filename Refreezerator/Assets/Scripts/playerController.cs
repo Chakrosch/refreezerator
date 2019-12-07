@@ -4,12 +4,14 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Rigidbody))]
-public class playerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Vector3 movement; // Y-Axis should always be zero
     public float movementSpeed;
     public Rigidbody rb;
-    private bool vegetableNearby;
+    private PickUpObject objectInRange;
+    public Fridge fridge;
+
 
     void Update()
     {
@@ -40,22 +42,71 @@ public class playerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "vegetable")
+        if(collision.gameObject.tag == "vegetable" && collision.gameObject.GetComponent<Vegetable>() != null)
         {
-            vegetableNearby = true;
+            objectInRange = collision.gameObject.GetComponent<PickUpObject>();
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "vegetable")
+        if (collision.gameObject.tag == "vegetable" && collision.gameObject.GetComponent<Vegetable>() != null)
         {
-            vegetableNearby = false;
+            objectInRange = null;
         }
     }
 
     private void pickUp()
     {
-        Debug.Log("Test");
+        if (objectInRange != null)
+        {
+            fridge.currentObject = objectInRange.type.ToString();
+            Destroy(objectInRange.gameObject);
+            objectInRange = null;
+        }
+    }
+
+    private void throwOut()
+    {
+
+
+        switch (fridge.currentObject.type)
+        {
+            case FridgeObject.fridgeObjectTypes.alcohol:
+                throwAlcohol();
+                break;
+            case FridgeObject.fridgeObjectTypes.enemy:
+                throwEnemy();
+                break;
+            case FridgeObject.fridgeObjectTypes.player:
+                break;
+            case FridgeObject.fridgeObjectTypes.vegetable:
+                throwVegetable();
+                break;
+        }
+    }
+
+    private void throwAlcohol()
+    {
+        for (int i = 0; i < PrefabManager.instance.alcohol.Length; i++)
+        {
+            if(PrefabManager.instance.alcohol[i].GetComponent<Alcohol>() != null)
+                if(PrefabManager.instance.alcohol[i].GetComponent<Alcohol>().name == fridge.currentObject.name)
+                {
+                    Instantiate(PrefabManager.instance.alcohol[i]);
+                    break;
+                }
+        }
+        fridge.currentObject = null;
+    }
+
+    private void throwVegetable()
+    {
+
+    }
+
+    private void throwEnemy()
+    {
+
     }
 }
