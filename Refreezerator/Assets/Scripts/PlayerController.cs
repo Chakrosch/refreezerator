@@ -166,13 +166,12 @@ public class PlayerController : MonoBehaviour
         c.a = 0;
         currentItemImage.color = c;
     }
-	public void GameOver()
+	public static void GameOver()
 	{
-  //Highscore mechanic; execute on player death or return to safety
-  
-		SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+  //Highscore mechanic; execute on player death or return to safety		
 		WriteString();
 		Home.resetVeggieCount();
+		SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 	}
   [MenuItem("Tools/Write file")]
     static void WriteString()
