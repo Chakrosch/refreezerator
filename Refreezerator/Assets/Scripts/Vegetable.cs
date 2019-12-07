@@ -8,10 +8,7 @@ public class Vegetable : PickUpObject
     {
 
     }
-    private float temperature = 1f; //0 normal; 1 gefroren
     public vegetables type;
-
-    public float thawing_speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +18,9 @@ public class Vegetable : PickUpObject
     // Update is called once per frame
     void Update()
     {
+        base.setTemperature();
         if (temperature > 0)
         {
-            temperature = temperature - thawing_speed;
             Debug.Log("Vegtabletemp" + this.name + " " + temperature);
             Debug.Log("color: " + gameObject.GetComponent<Renderer>().material.color.a);
             var col = gameObject.GetComponent<Renderer> ().material.color;

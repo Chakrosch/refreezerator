@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
             fridge.currentObject.setRigidbody(false);
             fridge.currentObject.transform.parent = transform;
             fridge.currentObject.transform.localPosition = Vector3.up;
+            fridge.currentObject.inFridge = true;
         }
     }
 
@@ -116,6 +117,7 @@ public class PlayerController : MonoBehaviour
         fridge.currentObject.setInvisible(false);
         fridge.currentObject.setRigidbody(true);
         fridge.currentObject.transform.parent = null;
+        fridge.currentObject.inFridge = false;
         fridge.currentObject.rb.AddForce(throwVec, ForceMode.Impulse);
         fridge.currentObject = null;
     }
