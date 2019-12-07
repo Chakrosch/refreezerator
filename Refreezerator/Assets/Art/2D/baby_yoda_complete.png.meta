@@ -1,12 +1,45 @@
 fileFormatVersion: 2
 guid: 3c7e90d5d5b2ac540a8279188f7aa9f2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6367502636839791745
+    second: baby_yoda_complete_0
+  - first:
+      213: -2110619843448978592
+    second: baby_yoda_complete_1
+  - first:
+      213: 1573505629288397547
+    second: baby_yoda_complete_2
+  - first:
+      213: 3067234657315310672
+    second: baby_yoda_complete_3
+  - first:
+      213: -2885866583877770951
+    second: baby_yoda_complete_4
+  - first:
+      213: 7336715681387256651
+    second: baby_yoda_complete_5
+  - first:
+      213: -4163529991421766571
+    second: baby_yoda_complete_6
+  - first:
+      213: 3325652331128394766
+    second: baby_yoda_complete_7
+  - first:
+      213: -6936597232708604951
+    second: baby_yoda_complete_8
+  - first:
+      213: 176404424562560720
+    second: baby_yoda_complete_9
+  - first:
+      213: 498545364459166440
+    second: baby_yoda_complete_10
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -31,27 +64,27 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
-    wrapU: -1
-    wrapV: -1
+    wrapU: 1
+    wrapV: 1
     wrapW: -1
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -63,7 +96,19 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -72,11 +117,242 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: baby_yoda_complete_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 3
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee5093020b6f47c4ba5842212a4720c8
+      internalID: 6367502636839791745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baby_yoda_complete_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 3
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5a14837677901643b0cb21337e6934b
+      internalID: -2110619843448978592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baby_yoda_complete_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 3
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe20ce2c09e962645a78db86f9fbd39f
+      internalID: 1573505629288397547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baby_yoda_complete_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 3
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74258ca60c24bae4281fb07819554f21
+      internalID: 3067234657315310672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baby_yoda_complete_4
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 3
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51b3ad397f5a7874e883eca8b3e8c0c5
+      internalID: -2885866583877770951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baby_yoda_complete_5
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 3
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95ee5a981b0c2b842b20e5c284698979
+      internalID: 7336715681387256651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baby_yoda_complete_6
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 3
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99b9e85e52d62b849b62868353aa3cd3
+      internalID: -4163529991421766571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baby_yoda_complete_7
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 3
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e4acb0bcb4c7d24996f8a8e7bae146b
+      internalID: 3325652331128394766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baby_yoda_complete_8
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 2
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca66ec0ee4044da4399917487edcb39c
+      internalID: -6936597232708604951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baby_yoda_complete_9
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 3
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 281161f044d9b1c4fb967332a79db519
+      internalID: 176404424562560720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baby_yoda_complete_10
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 2
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ea0dbff7adc664c931d47f53119710
+      internalID: 498545364459166440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
