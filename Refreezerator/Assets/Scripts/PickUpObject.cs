@@ -26,6 +26,9 @@ public class PickUpObject : MonoBehaviour
     public void setRigidbody(bool on)
     {
         GetComponent<Collider>().enabled = on;
-        GetComponent<Rigidbody>().detectCollisions = on;
+        GetComponent<Rigidbody>().useGravity = on;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
     }
 }

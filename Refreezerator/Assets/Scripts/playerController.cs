@@ -7,17 +7,24 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Vector3 movement; // Y-Axis should always be zero
+    private Vector3 throwVec;
     public float movementSpeed;
     public Rigidbody rb;
     private PickUpObject objectInRange;
     public Fridge fridge;
     public float throwForce;
+    public Vector3 lookingDirection;
 
 
     void Update()
     {
         getInput();
         move();
+        if(fridge.currentObject != null) 
+        {
+            fridge.currentObject.transform.localPosition = Vector3.up;
+        }
+        getDirection();
     }
 
     /// <summary>
@@ -27,6 +34,9 @@ public class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxis("Horizontal") * movementSpeed;
         movement.z = Input.GetAxis("Vertical") * movementSpeed;
+
+        throwVec = lookingDirection * throwForce;
+
         if (Input.GetButtonDown("Interact"))
         {
             if (fridge.currentObject != null)
@@ -40,6 +50,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void getDirection()
+    {
+        if(Input.GetAxis("Vertical") > 0)
+        {
+            lookingDirection.z = 1;
+            lookingDirection.x = 0;
+        }
+        else if (Input.GetAxis("Vertical") < 0)
+        {
+            lookingDirection.z = -1;
+            lookingDirection.x = 0;
+        }
+        else if (Input.GetAxis("Horizontal") > 0)
+        {
+            lookingDirection.x = 1;
+            lookingDirection.z = 0;
+        }
+        else if (Input.GetAxis("Horizontal") < 0)
+        {
+            lookingDirection.x = -1;
+            lookingDirection.z = 0;
+        }
+    }
+
     /// <summary>
     /// Moves the player in 3d Space
     /// </summary>
@@ -50,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "vegetable" && collision.gameObject.GetComponent<Vegetable>() != null)
+        if(collision.gameObject.GetComponent<PickUpObject>() != null)
         {
             objectInRange = collision.gameObject.GetComponent<PickUpObject>();
         }
@@ -58,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "vegetable" && collision.gameObject.GetComponent<Vegetable>() != null)
+        if (collision.gameObject.GetComponent<PickUpObject>() != null)
         {
             objectInRange = null;
         }
@@ -68,20 +102,23 @@ public class PlayerController : MonoBehaviour
     {
         if (objectInRange != null)
         {
+            Debug.Log("test");
             fridge.currentObject = objectInRange;
             objectInRange = null;
             fridge.currentObject.setInvisible(true);
             fridge.currentObject.setRigidbody(false);
             fridge.currentObject.transform.parent = transform;
-            fridge.currentObject.transform.position = Vector3.zero;
+            fridge.currentObject.transform.localPosition = Vector3.up;
         }
     }
 
     private void throwOut()
     {
+        Debug.Log("Throw");
         fridge.currentObject.setInvisible(false);
         fridge.currentObject.setRigidbody(true);
-        fridge.currentObject.rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+        fridge.currentObject.transform.parent = null;
+        fridge.currentObject.rb.AddForce(throwVec, ForceMode.Impulse);
         fridge.currentObject = null;
     }
 }
