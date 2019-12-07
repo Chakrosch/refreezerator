@@ -19,11 +19,13 @@ public class PlayerController : MonoBehaviour
     public Vector3 lookingDirection;
     public EasterEgg easteregg;
     public KeyCode lastKey;
-    public Slider slider;
     public Image currentItemImage;
+    public icicleSlider slider;
 
 void Start(){
-	slider =  GameObject.Find("Slider").GetComponent<Slider>();
+
+	slider =  GameObject.Find("icicle").GetComponent<icicleSlider>();
+        currentItemImage = GameObject.Find("ItemSlot").GetComponent<Image>();
 	
 }
     void Update()
