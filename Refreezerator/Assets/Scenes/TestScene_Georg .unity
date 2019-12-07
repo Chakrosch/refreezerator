@@ -954,6 +954,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2124392429}
+    - target: {fileID: 204121298125509772, guid: a3631a8ec22a86a4db0eb0a43b0e4480,
+        type: 3}
+      propertyPath: chaseDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7894833041542241494, guid: a3631a8ec22a86a4db0eb0a43b0e4480,
         type: 3}
       propertyPath: m_LocalPosition.x
