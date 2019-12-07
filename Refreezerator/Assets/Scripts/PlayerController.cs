@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
+using UnityEditor;
+using System.IO;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -137,7 +139,7 @@ public class PlayerController : MonoBehaviour
             fridge.currentObject.setInvisible(true);
             fridge.currentObject.setRigidbody(false);
             fridge.currentObject.transform.parent = transform;
-            fridge.currentObject.transform.localPosition = Vector3.up;
+            fridge.currentObject.transform.localPosition = Vector3.down*100;
             fridge.currentObject.inFridge = true;
             Color c = currentItemImage.color;
             c.a = 1;
@@ -164,4 +166,22 @@ public class PlayerController : MonoBehaviour
         c.a = 0;
         currentItemImage.color = c;
     }
+	public static void GameOver()
+	{
+  //Highscore mechanic; execute on player death or return to safety		
+		WriteString();
+		Home.resetVeggieCount();
+		SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+	}
+  [MenuItem("Tools/Write file")]
+    static void WriteString()
+    {
+        string path = "Assets/highscore.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine(Home.getVeggie()+";");
+        writer.Close();
+    }
+
 }
