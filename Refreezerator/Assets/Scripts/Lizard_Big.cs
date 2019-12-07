@@ -11,7 +11,7 @@ public class Lizard_Big : MonoBehaviour
     private bool playerNearby = false;
     public GameObject player;
     private int layerMask = 1 << 10;
-    public Stun stun;
+    private Stun stun;
 
 
 // Start is called before the first frame update
