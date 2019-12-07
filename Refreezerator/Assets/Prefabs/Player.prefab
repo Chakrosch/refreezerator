@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7122546218790286537}
   - component: {fileID: 7122546218790286536}
   - component: {fileID: 7122546218790286541}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 7122546219979974987}
   - component: {fileID: 7122546219979974986}
   - component: {fileID: 7122546219979974989}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 7122546220372777268}
   - component: {fileID: 7122546220372777271}
   - component: {fileID: 7122546220372777270}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: viking-Sheet_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
