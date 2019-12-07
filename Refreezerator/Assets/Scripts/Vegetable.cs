@@ -6,12 +6,14 @@ public class Vegetable : PickUpObject
 {
     public enum vegetables
     {
-
+        carrot,
+        broccoli,
+        eggplant,
+        corn,
+        tomato,
+        paprika
     }
-    private float temperature = 1f; //0 normal; 1 gefroren
     public vegetables type;
-
-    public float thawing_speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,19 +23,19 @@ public class Vegetable : PickUpObject
     // Update is called once per frame
     void Update()
     {
+        base.setTemperature();
         if (temperature > 0)
         {
-            temperature = temperature - thawing_speed;
             Debug.Log("Vegtabletemp" + this.name + " " + temperature);
-            Debug.Log("color: " + gameObject.GetComponent<Renderer>().material.color.a);
-            var col = gameObject.GetComponent<Renderer> ().material.color;
+            Debug.Log("color: " + renderer.color.a);
+            var col = renderer.color;
             col.a = temperature;
-            this.GetComponent<MeshRenderer>().material.color = 
+            renderer.color = 
                 new Color(
-                    gameObject.GetComponent<Renderer>().material.color.r,
-                    gameObject.GetComponent<Renderer>().material.color.g,
-                    temperature,
-                    gameObject.GetComponent<Renderer>().material.color.a);
+                    temperature / 2 + 0.5f,
+                    renderer.color.g,
+                    renderer.color.b,
+                    renderer.color.a);
 
         }
     }
