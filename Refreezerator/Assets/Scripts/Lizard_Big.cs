@@ -23,11 +23,13 @@ void Update()
 updatePlayerDistance();
 if (playerNearby)
 {
+    Debug.Log("chase! chase!");
     ChaseMove();
 }
 else
 {
     IdleMove();
+    
 }
 }
 
@@ -71,8 +73,10 @@ if (direction_change_timer >= 5f)
 
 direction_change_timer+= Time.deltaTime;
 }
-private void updatePlayerDistance(){
-if(Vector3.Distance(player.transform.position, this.transform.position)>chaseDistance)
+private void updatePlayerDistance()
+{
+    Debug.Log("Distance: " + Vector3.Distance(player.transform.position, this.transform.position));
+if(Vector3.Distance(player.transform.position, this.transform.position)<chaseDistance)
 {
     playerNearby = true;
 }
