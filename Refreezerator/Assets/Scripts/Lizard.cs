@@ -10,15 +10,26 @@ public class Lizard : MonoBehaviour
     public float speed;
     private bool veggieNearby = false;
     private GameObject isChased;
-
+    private float countDown;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (countDown < 0)
+        {
+            anim.SetTrigger("randomEarFlap");
+            countDown = Random.Range(3f, 10f);
+        }
+        else
+        {
+            countDown -= Time.deltaTime;
+        }
         if (veggieNearby)
             {
                 ChaseMove();
@@ -51,22 +62,27 @@ public class Lizard : MonoBehaviour
             if (dir == 0)
             {
                 rb.velocity = new Vector3(0, 0, 0);
+                anim.SetBool("isRunning", false);
             }
             else if (dir == 1)
             {
                 rb.velocity = new Vector3(1, 0, 0) * speed;
+                anim.SetBool("isRunning", true);
             }
             else if (dir == 2)
             {
                 rb.velocity = new Vector3(0, 0, 1) * speed;
+                anim.SetBool("isRunning", true);
             }
             else if (dir == 3)
             {
                 rb.velocity = new Vector3(-1, 0, 0) * speed;
+                anim.SetBool("isRunning", true);
             }
             else
             {
                 rb.velocity = new Vector3(0, 0, -1) * speed;
+                anim.SetBool("isRunning", true);
             }
         }
 
