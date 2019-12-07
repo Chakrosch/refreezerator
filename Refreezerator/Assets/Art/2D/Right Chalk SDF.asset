@@ -52,9 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Right Chalk SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -1898800580
   material: {fileID: 9068723881763327746}
-  materialHashCode: 0
+  materialHashCode: -1792425161
   m_Version: 1.1.0
   m_SourceFontFileGUID: 4264499a609eb4f4891ffc10b3bd6044
   m_SourceFontFile_EditorRef: {fileID: 0}
@@ -77,7 +77,7 @@ MonoBehaviour:
     m_SubscriptSize: 0.5
     m_UnderlineOffset: -8.839844
     m_UnderlineThickness: 4.5410156
-    m_StrikethroughOffset: 0
+    m_StrikethroughOffset: 23.2
     m_StrikethroughThickness: 4.5410156
     m_TabWidth: 15
   m_GlyphTable:
@@ -2413,9 +2413,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
