@@ -13,11 +13,13 @@ public class Vegetable : PickUpObject
         tomato,
         paprika
     }
+
+
     public vegetables type;
     // Start is called before the first frame update
     void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame
@@ -37,4 +39,5 @@ public class Vegetable : PickUpObject
 
         }
     }
+
 }

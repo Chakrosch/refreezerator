@@ -135,6 +135,10 @@ public class PlayerController : MonoBehaviour
     private void throwOut()
     {
         fridge.currentObject.setInvisible(false);
+        if (fridge.currentObject.isFrozen)
+        {
+            fridge.currentObject.setFreeze(true);
+        }
         fridge.currentObject.setRigidbody(true);
         fridge.currentObject.transform.parent = null;
         fridge.currentObject.inFridge = false;

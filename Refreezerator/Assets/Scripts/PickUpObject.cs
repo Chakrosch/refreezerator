@@ -6,22 +6,26 @@ using UnityEngine;
 public class PickUpObject : MonoBehaviour
 {
     public Rigidbody rb;
-    public float temperature;
+    public float temperature = 0;
     public bool inFridge;
     public float timeToChangeState;
     public float maxFreezeTime;
-    public float currenFreezeTime;
+    public float currentFreezeTime;
+    public bool isFrozen;
     public SpriteRenderer renderer;
-    
+    public GameObject ice;
 
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        
+        setUpIce();
+        setFreeze(false);
+        isFrozen = false;
     }
 
     // Update is called once per frame
+
     void Update()
     {
         setTemperature();
@@ -48,15 +52,22 @@ public class PickUpObject : MonoBehaviour
             {
                 temperature -= Time.deltaTime / timeToChangeState;
             }
-            else
+            else if (temperature < 0 && !isFrozen)
             {
-                currenFreezeTime = maxFreezeTime;
+                temperature = 0;
+                currentFreezeTime = maxFreezeTime;
+                isFrozen = true;
             }
         }
         else
         {
-            if (currenFreezeTime <= 0)
+            if (currentFreezeTime <= 0)
             {
+                if (isFrozen)
+                {    
+                    setFreeze(false);
+                    isFrozen = false;
+                }
                 if (temperature < 1)
                 {
                     temperature += Time.deltaTime / timeToChangeState;
@@ -64,8 +75,25 @@ public class PickUpObject : MonoBehaviour
             }
             else
             {
-                currenFreezeTime -= Time.deltaTime;
+                currentFreezeTime -= Time.deltaTime;
             }
+        }
+    }
+
+    private void setUpIce()
+    {
+        ice = Instantiate(ice, Vector3.zero, Quaternion.identity);
+        ice.transform.SetParent(this.transform);
+        ice.transform.localPosition = Vector3.zero;
+        ice.transform.localRotation = Quaternion.Euler(45.0f, 0, 0);
+    }
+
+
+    public void setFreeze(bool freezed)
+    {
+        foreach (var render in ice.GetComponentsInChildren<SpriteRenderer>())
+        {
+            render.enabled = freezed;
         }
     }
 }
