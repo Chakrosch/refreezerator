@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1231669731743234616}
   m_Layer: 9
   m_Name: Lizard
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

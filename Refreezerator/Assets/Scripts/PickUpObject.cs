@@ -15,6 +15,10 @@ public class PickUpObject : MonoBehaviour
     public SpriteRenderer renderer;
     public GameObject ice;
 
+    public float distance = 0.1f;
+
+    
+    private bool isFlying;
 
     // Start is called before the first frame update
     public void Start()
@@ -29,6 +33,28 @@ public class PickUpObject : MonoBehaviour
     void Update()
     {
         setTemperature();
+        
+        if (isFlying)
+        {
+            RaycastHit hit;
+            Debug.DrawRay(transform.position, Vector3.down);
+            if (Physics.Raycast(transform.position, Vector3.down, out hit))
+            {
+                if (hit.collider.tag == "floor" && hit.distance < distance)
+                {    
+                    print("Back on floor");
+                    gameObject.layer = 8;
+                    isFlying = false;
+                } else if (hit.collider.tag == "enemy")
+                {
+                    Stun stun = hit.collider.GetComponent<Stun>();
+                    if (stun)
+                    {
+                        stun.stun();
+                    }
+                }
+            }
+        }
     }
 
     public void setInvisible(bool invisible)
@@ -95,5 +121,12 @@ public class PickUpObject : MonoBehaviour
         {
             render.enabled = freezed;
         }
+    }
+    
+    
+    public void throwObject()
+    {
+        gameObject.layer = 11;
+        isFlying = true;
     }
 }

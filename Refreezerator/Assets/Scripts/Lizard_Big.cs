@@ -23,7 +23,7 @@ void Update()
 updatePlayerDistance();
 if (playerNearby)
 {
-    Debug.Log("chase! chase!");
+    //Debug.Log("chase! chase!");
     ChaseMove();
 }
 else
@@ -37,7 +37,7 @@ void ChaseMove()
 {
     if (Physics.Raycast(transform.position, player.transform.position, 2))
     {
-        print("There is something in front of the CHONK LIZARD!");
+        //print("There is something in front of the CHONK LIZARD!");
 }
 
 Vector3 movement = new Vector3(
