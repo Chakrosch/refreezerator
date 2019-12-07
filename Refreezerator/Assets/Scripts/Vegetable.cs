@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vegetable : MonoBehaviour
+public class Vegetable : pickUpObject
 {
+    public enum vegetables
+    {
+
+    }
     private float temperature = 1f; //0 normal; 1 gefroren
+    public vegetables type;
 
     public float thawing_speed;
     // Start is called before the first frame update
@@ -31,6 +36,5 @@ public class Vegetable : MonoBehaviour
                     gameObject.GetComponent<Renderer>().material.color.a);
 
         }
-        
     }
 }
