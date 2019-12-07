@@ -35,6 +35,11 @@ else
 
 void ChaseMove()
 {
+    if (Physics.Raycast(transform.position, player.transform.position, 2))
+    {
+        print("There is something in front of the CHONK LIZARD!");
+}
+
 Vector3 movement = new Vector3(
     player.transform.position.x - this.transform.position.x,
     player.transform.position.y - this.transform.position.y,
@@ -75,7 +80,7 @@ direction_change_timer+= Time.deltaTime;
 }
 private void updatePlayerDistance()
 {
-    Debug.Log("Distance: " + Vector3.Distance(player.transform.position, this.transform.position));
+    
 if(Vector3.Distance(player.transform.position, this.transform.position)<chaseDistance)
 {
     playerNearby = true;
