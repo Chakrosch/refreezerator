@@ -102,7 +102,6 @@ public class PlayerController : MonoBehaviour
     {
         if (objectInRange != null)
         {
-            Debug.Log("test");
             fridge.currentObject = objectInRange;
             objectInRange = null;
             fridge.currentObject.setInvisible(true);
@@ -114,7 +113,6 @@ public class PlayerController : MonoBehaviour
 
     private void throwOut()
     {
-        Debug.Log("Throw");
         fridge.currentObject.setInvisible(false);
         fridge.currentObject.setRigidbody(true);
         fridge.currentObject.transform.parent = null;
