@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     public Fridge fridge;
     public float throwForce;
     public Vector3 lookingDirection;
+    public EasterEgg easteregg;
+    private bool rightKeyCode;
+    public KeyCode lastKey;
 
 
     void Update()
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour
             fridge.currentObject.transform.localPosition = Vector3.up;
         }
         getDirection();
+        checkEasterEgg();
     }
 
     /// <summary>
@@ -50,7 +54,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void getDirection()
+    private void checkEasterEgg()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            lastKey = KeyCode.S;
+        }
+        else if (Input.GetKeyDown(KeyCode.G) && lastKey == KeyCode.S)
+        {
+            lastKey = KeyCode.G;
+        }
+        else if (Input.GetKeyDown(KeyCode.J) && lastKey == KeyCode.G)
+        {
+            lastKey = KeyCode.Alpha0;
+            easteregg.show();
+        }
+    }
+            private void getDirection()
     {
         if(Input.GetAxis("Vertical") > 0)
         {
