@@ -50,6 +50,13 @@ public class Vegetable : PickUpObject
                 if (hit.collider.tag == "floor")
                 {
                     gameObject.layer = 8;
+                } else if (hit.collider.tag == "enemy")
+                {
+                    Stun stun = hit.collider.GetComponent<Stun>();
+                    if (stun)
+                    {
+                        stun.stun();
+                    }
                 }
             }
         }

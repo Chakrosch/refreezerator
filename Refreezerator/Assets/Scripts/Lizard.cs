@@ -4,30 +4,31 @@ using UnityEngine;
 
 public class Lizard : MonoBehaviour
 {
+
     private float direction_change_timer = 5f;
     public Rigidbody rb;
     public float speed;
-    private bool veggieNearby= false;
+    private bool veggieNearby = false;
     private GameObject isChased;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
         if (veggieNearby)
-        {
-            ChaseMove();
+            {
+                ChaseMove();
+            }
+            else
+            {
+                IdleMove();
+            }
         }
-        else
-        {
-            IdleMove();
-    }
-}
+    
 
     void ChaseMove()
     {
@@ -35,14 +36,13 @@ public class Lizard : MonoBehaviour
             isChased.transform.position.x - this.transform.position.x,
             isChased.transform.position.y - this.transform.position.y,
             isChased.transform.position.z - this.transform.position.z
-            );
+        );
         movement = Vector3.Normalize(movement);
         rb.velocity = movement * speed;
     }
 
     void IdleMove()
     {
-        
         if (direction_change_timer >= 5f)
         {
             direction_change_timer = 0f;
@@ -51,24 +51,28 @@ public class Lizard : MonoBehaviour
             if (dir == 0)
             {
                 rb.velocity = new Vector3(0, 0, 0);
-            }else if (dir == 1)
-            {
-                rb.velocity = new Vector3(1, 0, 0)*speed;
-            }else if (dir == 2)
-            {
-                rb.velocity = new Vector3(0, 0, 1)*speed;
-            }else if (dir == 3)
-            {
-                rb.velocity = new Vector3(-1, 0, 0)*speed;
-            }else 
-            {
-                rb.velocity = new Vector3(0, 0, -1)*speed;
             }
-
+            else if (dir == 1)
+            {
+                rb.velocity = new Vector3(1, 0, 0) * speed;
+            }
+            else if (dir == 2)
+            {
+                rb.velocity = new Vector3(0, 0, 1) * speed;
+            }
+            else if (dir == 3)
+            {
+                rb.velocity = new Vector3(-1, 0, 0) * speed;
+            }
+            else
+            {
+                rb.velocity = new Vector3(0, 0, -1) * speed;
+            }
         }
 
-        direction_change_timer+= Time.deltaTime;
+        direction_change_timer += Time.deltaTime;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "vegetable")
@@ -77,6 +81,7 @@ public class Lizard : MonoBehaviour
             isChased = other.gameObject;
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "vegetable")
