@@ -164,4 +164,19 @@ public class PlayerController : MonoBehaviour
         c.a = 0;
         currentItemImage.color = c;
     }
+public void GameOver(){
+  //Highscore mechanic; execute on player death or return to safety
+    [MenuItem("Tools/Write file")]
+    static void WriteString()
+    {
+        string path = "Assets/highscore.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine(Home.getVeggie+";");
+        writer.Close();
+
+    }
+}
+}
 }

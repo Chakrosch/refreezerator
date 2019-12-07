@@ -23,28 +23,4 @@ public class PlayButton : MonoBehaviour
     }
    
     
-    //Highscore mechanic; execute on player death or return to safety
-    [MenuItem("Tools/Write file")]
-    static void WriteString()
-    {
-        string path = "Assets/highscore.txt";
-
-        //Write some text to the test.txt file
-        StreamWriter writer = new StreamWriter(path, true);
-        writer.WriteLine("Test");
-        writer.Close();
-
-        
-    }
-
-    [MenuItem("Tools/Read file")]
-    static void ReadString()
-    {
-        string path = "Assets/highscore.txt";
-
-        //Read the text from directly from the test.txt file
-        StreamReader reader = new StreamReader(path); 
-        Debug.Log(reader.ReadToEnd());
-        reader.Close();
-    }
-}
+  

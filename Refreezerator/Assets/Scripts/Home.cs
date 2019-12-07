@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Home : MonoBehaviour
 {
-    private int veggieCount = 0;
+    private static int veggieCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,11 @@ public class Home : MonoBehaviour
         
     }
 
+    public static int getVeggie()
+    {
+        return veggieCount;
+        
+    }
     private void OnCollisionEnter(Collision other)
     {
         Vegetable veggie = other.gameObject.GetComponent<Vegetable>();
