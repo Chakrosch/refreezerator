@@ -26,8 +26,6 @@ public class Vegetable : PickUpObject
         base.setTemperature();
         if (temperature > 0)
         {
-            Debug.Log("Vegtabletemp" + this.name + " " + temperature);
-            Debug.Log("color: " + renderer.color.a);
             var col = renderer.color;
             col.a = temperature;
             renderer.color = 
