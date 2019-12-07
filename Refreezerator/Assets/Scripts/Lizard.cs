@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Lizard : MonoBehaviour
 {
-    // Start is called before the first frame update
     private float direction_change_timer = 5f;
     public Rigidbody rb;
     public float speed;
     private bool veggieNearby= false;
     private GameObject isChased;
-
+    
+    // Start is called before the first frame update
     void Start()
     {
 
