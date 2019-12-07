@@ -8,7 +8,7 @@ public class Stun : MonoBehaviour
     private bool isStunned;
 
     private float stunTime;
-    private SpriteRenderer renderer;
+    private new SpriteRenderer renderer;
 
 
     private void Start()

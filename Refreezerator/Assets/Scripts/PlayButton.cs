@@ -21,7 +21,7 @@ public class PlayButton : MonoBehaviour
     void TaskOnClick()
     {
 
-        SceneManager.LoadScene("TestScene_Moritz", LoadSceneMode.Single);
+        SceneManager.LoadScene("Level01", LoadSceneMode.Single);
 
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Alcohol : MonoBehaviour
 {
 
-    public string name;
+    public new string name;
 
     private float temperature;
     // Start is called before the first frame update
