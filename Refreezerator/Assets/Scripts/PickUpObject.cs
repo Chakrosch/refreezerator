@@ -44,9 +44,9 @@ public class PickUpObject : MonoBehaviour
     {
         if (inFridge)
         {
-            if (temperature < 1)
+            if (temperature > 0)
             {
-                temperature += Time.deltaTime / timeToChangeState;
+                temperature -= Time.deltaTime / timeToChangeState;
             }
             else
             {
@@ -57,9 +57,9 @@ public class PickUpObject : MonoBehaviour
         {
             if (currenFreezeTime <= 0)
             {
-                if (temperature > 0)
+                if (temperature < 1)
                 {
-                    temperature -= Time.deltaTime / timeToChangeState;
+                    temperature += Time.deltaTime / timeToChangeState;
                 }
             }
             else

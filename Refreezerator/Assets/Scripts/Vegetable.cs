@@ -6,7 +6,12 @@ public class Vegetable : PickUpObject
 {
     public enum vegetables
     {
-
+        carrot,
+        broccoli,
+        eggplant,
+        corn,
+        tomato,
+        paprika
     }
     public vegetables type;
     // Start is called before the first frame update
@@ -27,7 +32,7 @@ public class Vegetable : PickUpObject
             col.a = temperature;
             renderer.color = 
                 new Color(
-                    temperature * 255,
+                    temperature / 2 + 0.5f,
                     renderer.color.g,
                     renderer.color.b,
                     renderer.color.a);
