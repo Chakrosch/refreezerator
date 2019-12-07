@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 1602304051}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -940,6 +940,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8288388489579076614, guid: e7fd5a5720f90fb48b7dcb205a7db024,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288388489579076614, guid: e7fd5a5720f90fb48b7dcb205a7db024,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7fd5a5720f90fb48b7dcb205a7db024, type: 3}
 --- !u!1001 &7894833041215006169
@@ -958,6 +968,11 @@ PrefabInstance:
         type: 3}
       propertyPath: chaseDistance
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7894833041542241483, guid: a3631a8ec22a86a4db0eb0a43b0e4480,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7894833041542241494, guid: a3631a8ec22a86a4db0eb0a43b0e4480,
         type: 3}

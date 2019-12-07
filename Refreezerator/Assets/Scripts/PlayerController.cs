@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
             fridge.currentObject.setInvisible(true);
             fridge.currentObject.setRigidbody(false);
             fridge.currentObject.transform.parent = transform;
-            fridge.currentObject.transform.localPosition = Vector3.up;
+            fridge.currentObject.transform.localPosition = Vector3.down*100;
             fridge.currentObject.inFridge = true;
             Color c = currentItemImage.color;
             c.a = 1;
