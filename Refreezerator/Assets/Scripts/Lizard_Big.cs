@@ -159,4 +159,10 @@ public class Lizard_Big : MonoBehaviour
 
             return new Vector3(0, 10, 0); //sollte nie erreicht werden, wenn doch fliegt biggus echsus jetzt zum Mond
         }
+        void OnCollisionEnter(Collision collision)
+        {
+            Debug.Log(collision);
+            if (collision.gameObject.tag == "Player"){
+                PlayerController.GameOver();}
+        }
     }

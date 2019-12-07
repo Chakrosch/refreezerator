@@ -22,7 +22,10 @@ public class PlayerController : MonoBehaviour
     public Slider slider;
     public Image currentItemImage;
 
-
+void Start(){
+	slider =  GameObject.Find("Slider").GetComponent<Slider>();
+	
+}
     void Update()
     {
         getInput();
@@ -173,7 +176,6 @@ public class PlayerController : MonoBehaviour
 		Home.resetVeggieCount();
 		SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 	}
-  [MenuItem("Tools/Write file")]
     static void WriteString()
     {
         string path = "Assets/highscore.txt";
