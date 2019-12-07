@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7122546218790286539}
   - component: {fileID: 7122546218790286540}
   - component: {fileID: 7122546218790286537}
-  - component: {fileID: 7122546218790286536}
   - component: {fileID: 7122546218790286541}
+  - component: {fileID: 78257134}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -71,19 +71,8 @@ MonoBehaviour:
   lookingDirection: {x: 0, y: 0, z: 0}
   easteregg: {fileID: 0}
   lastKey: 0
---- !u!65 &7122546218790286536
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7122546218790286543}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7, y: 1.06, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  slider: {fileID: 0}
+  currentItemImage: {fileID: 0}
 --- !u!114 &7122546218790286541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +87,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentObject: {fileID: 0}
   full: 0
+--- !u!136 &78257134
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122546218790286543}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7122546219979974988
 GameObject:
   m_ObjectHideFlags: 0
