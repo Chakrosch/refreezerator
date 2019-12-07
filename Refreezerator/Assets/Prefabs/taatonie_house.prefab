@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3409915315102245404}
   - component: {fileID: 5911385000411551786}
   - component: {fileID: 87253110028870867}
+  - component: {fileID: 3925280404142158859}
   m_Layer: 0
   m_Name: taatonie_house
   m_TagString: Untagged
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3925280404142158859
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804019517580611599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4978319097839100882, guid: 9780414298c3c5943b44fdf05058ff89, type: 3}
