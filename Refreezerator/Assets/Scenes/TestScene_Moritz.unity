@@ -532,8 +532,8 @@ MonoBehaviour:
   rb: {fileID: 1026070941}
   temperature: 0
   inFridge: 0
-  timeToChangeState: 0
-  maxFreezeTime: 0
+  timeToChangeState: 2
+  maxFreezeTime: 2
   currenFreezeTime: 0
   renderer: {fileID: 980692585}
   type: 0
