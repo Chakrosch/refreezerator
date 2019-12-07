@@ -20,6 +20,10 @@ public class Stun : MonoBehaviour
 
     private void Update()
     {
+        if (isStunned)
+        {
+            print(stunTime);
+        }
         if (stunTime > 0)
         {
             stunTime -= Time.deltaTime / timeToChangeState;
@@ -27,18 +31,23 @@ public class Stun : MonoBehaviour
         else if (isStunned)
         {
             isStunned = false;
-            this.GetComponent<Lizard>().enabled = true;
-            this.GetComponent<Lizard_Big>().enabled = true;
             renderer.color = Color.white;
         }
     }
     
     public void stun()
     {
+        print("STUNNED");
         stunTime = 1;
-        this.GetComponent<Lizard>().enabled = false;
-        this.GetComponent<Lizard_Big>().enabled = false;
-        renderer.color = Color.gray;
-        
+        isStunned = true;
+        renderer.color = Color.black;
+
     }
+
+
+    public bool getStunned()
+    {
+        return isStunned;
+    }
+
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -94,6 +95,21 @@ public class PickUpObject : MonoBehaviour
         ice.transform.localRotation = Quaternion.Euler(45.0f, 0, 0);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        print(other.name);
+        print(isFrozen);
+        if (isFrozen && other.CompareTag("enemy"))
+        {
+            Stun stun = other.GetComponent<Stun>();
+            print(stun);
+            if (stun)
+            {
+                stun.stun();
+            }
+        }
+    }
+
 
     public void setFlying()
     {
@@ -103,19 +119,8 @@ public class PickUpObject : MonoBehaviour
             Debug.DrawRay(transform.position, Vector3.down, Color.blue, 0.2f);
             if (Physics.Raycast(transform.position, Vector3.down, out hit))
             {
-                print(hit.collider.gameObject.name);
-                print(hit.distance);
-                if (hit.collider.tag == "enemy")
+                if (hit.collider.CompareTag("floor") && hit.distance < distance)
                 {
-                    Stun stun = hit.collider.GetComponent<Stun>();
-                    if (stun)
-                    {
-                        stun.stun();
-                    }
-                }
-                else if (hit.collider.tag == "floor" && hit.distance < distance)
-                {
-                    print("Back on floor");
                     gameObject.layer = 8;
                     isFlying = false;
                 }

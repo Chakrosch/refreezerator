@@ -11,11 +11,13 @@ public class Lizard_Big : MonoBehaviour
     private bool playerNearby = false;
     public GameObject player;
     private int layerMask = 1 << 10;
+    public Stun stun;
 
 
 // Start is called before the first frame update
     void Start()
     {
+        stun = this.GetComponent<Stun>();
         layerMask = ~layerMask; //bitshift for collision with everything except layer 10 (player)
     }
 
@@ -23,13 +25,16 @@ public class Lizard_Big : MonoBehaviour
     void Update()
     {
         updatePlayerDistance();
-        if (playerNearby)
+        if (!stun.getStunned())
         {
-            ChaseMove();
-        }
-        else
-        {
-            IdleMove();
+            if (playerNearby)
+            {
+                ChaseMove();
+            }
+            else
+            {
+                IdleMove();
+            }    
         }
     }
 
