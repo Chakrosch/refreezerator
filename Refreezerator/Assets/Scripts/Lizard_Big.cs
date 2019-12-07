@@ -10,11 +10,13 @@ public float speed;
 public int chaseDistance;
 private bool playerNearby= false;
 public GameObject player;
+private int layerMask = 1 << 10; 
+
 
 // Start is called before the first frame update
 void Start()
 {
-
+    layerMask = ~layerMask; //bitshift for collision with everything except layer 10 (player)
 }
 
 // Update is called once per frame
@@ -23,7 +25,6 @@ void Update()
 updatePlayerDistance();
 if (playerNearby)
 {
-    //Debug.Log("chase! chase!");
     ChaseMove();
 }
 else
@@ -35,17 +36,27 @@ else
 
 void ChaseMove()
 {
-    if (Physics.Raycast(transform.position, player.transform.position, 2))
+    bool walkAround = false;
+    Vector3 dir = player.transform.position - this.transform.position;
+  // Debug.DrawRay( transform.position+new Vector3(0,0,0.5f),  dir,  Color.green,   1.0f,  false);
+    if (Physics.Raycast(transform.position+new Vector3(0,0,0.5f), dir, 2, layerMask)
+        ||Physics.Raycast(transform.position-new Vector3(0,0,0.5f), dir, 2, layerMask)
+        ||Physics.Raycast(transform.position+new Vector3(0.5f,0,0), dir, 2, layerMask)
+        ||Physics.Raycast(transform.position+new Vector3(0.5f,0,0), dir, 2, layerMask))
     {
-        //print("There is something in front of the CHONK LIZARD!");
-}
+     
 
-Vector3 movement = new Vector3(
-    player.transform.position.x - this.transform.position.x,
-    player.transform.position.y - this.transform.position.y,
-    player.transform.position.z - this.transform.position.z
-);
-movement = Vector3.Normalize(movement);
+    Vector3 movement = new Vector3(
+        player.transform.position.x - this.transform.position.x,
+        player.transform.position.y - this.transform.position.y,
+        player.transform.position.z - this.transform.position.z
+    );
+    movement = Vector3.Normalize(movement);
+    if (walkAround)
+    {
+       movement = WalkAround();
+    }
+
 rb.velocity = movement * speed;
 }
 
@@ -90,4 +101,51 @@ else {
 }
 }
 
+Vector3 WalkAround()
+{
+    float a = player.transform.position.x - this.transform.position.x;
+    float b = player.transform.position.y - this.transform.position.y;
+    //Bestimmt die beiden Richtungen in der sich d Player befindet. Raycastet nach der blockierenden wand und läuft in die andere Richtung.
+    if (a > 0 && b > 0)
+    {
+        if (Physics.Raycast(transform.position+new Vector3(0,0,0.5f), new Vector3(1,0,0), 2, layerMask))
+        {
+            Debug.Log("oben");
+            return new Vector3(0,0,1);
+        }
+
+        Debug.Log("rechts1");
+        return new Vector3(1,0,0);
+    }else if (a <= 0 && b > 0)
+    {
+        if (Physics.Raycast(transform.position+new Vector3(0,0,0.5f), new Vector3(-1,0,0), 2, layerMask))
+        {
+            Debug.Log("links");
+            return new Vector3(-1,0,0);
+        }
+        Debug.Log("oben");
+        return new Vector3(0,0,1);
+    }else if (a > 0 && b <= 0)
+    {
+        if (Physics.Raycast(transform.position+new Vector3(0,0,0.5f), new Vector3(1,0,0), 2, layerMask))
+        {
+            Debug.Log("unten");
+            return new Vector3(0,0,-1);
+        }
+        
+        Debug.Log("rechts2");
+        return new Vector3(1,0,0);
+    }else if (a <= 0 && b <= 0){
+    
+        if (Physics.Raycast(transform.position+new Vector3(0,0,0.5f),  new Vector3(-1,0,0),2, layerMask))
+        {
+            Debug.Log("unten");
+            return new Vector3(0,0,-1);
+        }
+        
+        Debug.Log("links");
+    return new Vector3(-1,0,0);
+    }
+    return new Vector3(0,10,0); //sollte nie erreicht werden, wenn doch fliegt biggus echsus jetzt zum Mond
+}
 }
