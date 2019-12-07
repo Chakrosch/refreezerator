@@ -280,6 +280,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7122546219979974986, guid: 090d0f004fbe49d4bb903bd45ea33cd8,
+        type: 3}
+      propertyPath: orthographic size
+      value: 6.65
+      objectReference: {fileID: 0}
     - target: {fileID: 7122546220372777271, guid: 090d0f004fbe49d4bb903bd45ea33cd8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -854,7 +859,7 @@ PrefabInstance:
     - target: {fileID: 2347273049696167345, guid: 2978355913b3fb6488710146219c5bc1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.93
       objectReference: {fileID: 0}
     - target: {fileID: 2347273049696167345, guid: 2978355913b3fb6488710146219c5bc1,
         type: 3}
@@ -864,7 +869,7 @@ PrefabInstance:
     - target: {fileID: 2347273049696167345, guid: 2978355913b3fb6488710146219c5bc1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.99
+      value: -5.68
       objectReference: {fileID: 0}
     - target: {fileID: 2347273049696167345, guid: 2978355913b3fb6488710146219c5bc1,
         type: 3}
