@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Lizard : MonoBehaviour
 {
-
     private float direction_change_timer = 5f;
     public Rigidbody rb;
     public float speed;
@@ -12,25 +11,30 @@ public class Lizard : MonoBehaviour
     private GameObject isChased;
     private float countDown;
     public Animator anim;
+    private Stun stun;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        stun = this.GetComponent<Stun>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (countDown < 0)
+        if (!stun.getStunned())
         {
-            anim.SetTrigger("randomEarFlap");
-            countDown = Random.Range(3f, 10f);
-        }
-        else
-        {
-            countDown -= Time.deltaTime;
-        }
-        if (veggieNearby)
+            if (countDown < 0)
+            {
+                anim.SetTrigger("randomEarFlap");
+                countDown = Random.Range(3f, 10f);
+            }
+            else
+            {
+                countDown -= Time.deltaTime;
+            }
+
+            if (veggieNearby)
             {
                 ChaseMove();
             }
@@ -39,7 +43,8 @@ public class Lizard : MonoBehaviour
                 IdleMove();
             }
         }
-    
+    }
+
 
     void ChaseMove()
     {
