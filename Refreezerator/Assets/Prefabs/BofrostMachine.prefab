@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3481647436788717774}
   - component: {fileID: 3481647436788717775}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BofrostMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7788998483573471565, guid: c642c8fbe3e82cb218a34ab7db69922f, type: 3}
+  allTheVeggies: []
+  spawningRate: 30

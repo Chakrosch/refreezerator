@@ -37,26 +37,8 @@ public Sprite paprikaS;
         gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = vegSprite;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        base.setTemperature();
-        base.setFlying();
-        if (temperature > 0)
-        {
-            var col = renderer.color;
-            col.a = temperature;
-            renderer.color = 
-                new Color(
-                    temperature / 2 + 0.5f,
-                    renderer.color.g,
-                    renderer.color.b,
-                    renderer.color.a);
-
-        }
-
-    }
-   private vegetables RandomVegetable ()
+    
+    private vegetables RandomVegetable ()
     {
         int i = Random.Range(0, 5);
         switch (i)

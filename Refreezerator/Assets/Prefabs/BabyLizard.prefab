@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7471752754519663637}
-  - component: {fileID: 7471752754519663636}
-  - component: {fileID: 2618939665787838354}
   - component: {fileID: 3867643815749193790}
   - component: {fileID: 545178663}
   - component: {fileID: 545178659}
+  - component: {fileID: 2618939665787838354}
+  - component: {fileID: 2765529855342562573}
+  - component: {fileID: -4197948900016304735}
   m_Layer: 0
   m_Name: BabyLizard
   m_TagString: Untagged
@@ -36,46 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7471752754519663636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7471752754519663633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec9c73fcfad7d2b42865a93e58cb99ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  temperature: 0
-  inFridge: 0
-  timeToChangeState: 0
-  maxFreezeTime: 0
-  currentFreezeTime: 0
-  isFrozen: 0
-  renderer: {fileID: 0}
-  ice: {fileID: 0}
-  agent: {fileID: 0}
-  roamRadius: 10
-  counter: 0
-  target: {fileID: 0}
-  seeRange: 20
-  vegetables: []
---- !u!114 &2618939665787838354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7471752754519663633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e8a62997594b4fa680125e8fe73901, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToChangeState: 3
 --- !u!195 &3867643815749193790
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -127,6 +88,57 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.4, y: 1, z: 1.4}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2618939665787838354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7471752754519663633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6e8a62997594b4fa680125e8fe73901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToChangeState: 3
+--- !u!114 &2765529855342562573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7471752754519663633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9583f0c1aedf7924884948ddf5d734e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  inFridge: 0
+  timeToChangeState: 2
+  maxFreezeTime: 2
+  currentFreezeTime: 0
+  isFrozen: 0
+  renderer: {fileID: 0}
+  ice: {fileID: 8801215924828509567, guid: cb309190b0df2f3919bc24d69fb83812, type: 3}
+--- !u!114 &-4197948900016304735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7471752754519663633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec9c73fcfad7d2b42865a93e58cb99ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  speed: 3.5
+  roamRadius: 2
+  timeBetweenRoam: 4
+  seeRange: 6
+  saveSpeed: 0
 --- !u!1 &7471752756029596003
 GameObject:
   m_ObjectHideFlags: 0
