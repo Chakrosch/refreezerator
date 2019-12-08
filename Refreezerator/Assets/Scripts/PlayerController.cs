@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour
         fridge.currentObject.throwObject();
         fridge.currentObject.setRigidbody(true);
         fridge.currentObject.transform.parent = null;
-        fridge.currentObject.transform.position = fridge.currentObject.transform.position + transform.forward;
+        fridge.currentObject.transform.position = fridge.currentObject.transform.position + lookingDirection;
         fridge.currentObject.inFridge = false;
         fridge.currentObject.rb.AddForce(throwVec, ForceMode.Impulse);
 

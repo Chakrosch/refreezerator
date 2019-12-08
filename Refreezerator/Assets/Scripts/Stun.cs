@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using System.Collections;
 
 public class Stun : MonoBehaviour
 {
@@ -46,18 +47,24 @@ public class Stun : MonoBehaviour
         print("STUNNED");
         stunTime = 1;
         isStunned = true;
-        renderer.color = Color.black;
-        if(GetComponent<Lizard>() != null)
-        {
-          getSpeed = GetComponent<Lizard>().agent.speed;
-          GetComponent<Lizard>().agent.speed = 0;
-        }
-        else if(GetComponent<Lizard_Big>() != null)
-        {
-           getSpeed = GetComponent<Lizard_Big>().agent.speed;
-            GetComponent<Lizard_Big>().agent.speed = 0;
-        }
+        renderer.color = Color.white;
+        this.GetComponent<Collider>().enabled = false;
+        this.GetComponent<Rigidbody>().isKinematic = true;
+        foreach (Behaviour childCompnent in this.gameObject.GetComponentsInChildren<Behaviour>())
+            childCompnent.enabled = false;
+        this.transform.rotation = Quaternion.Euler(0, 0f, 90f);
 
+        StartCoroutine(Death(this));    
+        
+        
+
+    }
+    
+    
+ 
+    IEnumerator Death(Stun stun) {
+        yield return new WaitForSeconds(3);
+        Destroy(this.gameObject);
     }
 
 
