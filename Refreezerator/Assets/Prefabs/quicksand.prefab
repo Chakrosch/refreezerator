@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4874340322256879449}
   m_Layer: 0
-  m_Name: quicksand_01
+  m_Name: quicksand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0, y: 0, z: 10}
+  bounce: 0
 --- !u!1 &3847253649945729456
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2023382881553643023}
   - component: {fileID: 4605715649263914287}
-  - component: {fileID: 2484239766885629097}
+  - component: {fileID: 6224280547856899683}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -171,7 +172,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2484239766885629097
+--- !u!114 &6224280547856899683
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3847253649945729456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb7dd00eb434d594ea58ab1b076c4942, type: 3}
+  m_Script: {fileID: 11500000, guid: a261bc3007515b949b7103af0c88dfe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5681763284041757128
