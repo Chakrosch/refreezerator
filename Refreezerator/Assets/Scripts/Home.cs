@@ -33,7 +33,10 @@ public class Home : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         Vegetable veggie = other.gameObject.GetComponent<Vegetable>();
-        Destroy(levels[veggieCount]);
+        if (veggieCount < levels.Count)
+        {
+            Destroy(levels[veggieCount]);
+        }
         if (veggie)
         {
             veggieCount++;
