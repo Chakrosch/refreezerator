@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7471752754519663637}
   - component: {fileID: 7471752754519663636}
-  - component: {fileID: 7471752754519663639}
-  - component: {fileID: 7471752754519663638}
   - component: {fileID: 2618939665787838354}
+  - component: {fileID: 3867643815749193790}
+  - component: {fileID: 545178663}
+  - component: {fileID: 545178659}
   m_Layer: 0
   m_Name: BabyLizard
   m_TagString: Untagged
@@ -47,10 +48,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9c73fcfad7d2b42865a93e58cb99ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 7471752754519663639}
-  speed: 5
-  anim: {fileID: 7471752756029596000}
---- !u!54 &7471752754519663639
+  rb: {fileID: 0}
+  temperature: 0
+  inFridge: 0
+  timeToChangeState: 0
+  maxFreezeTime: 0
+  currentFreezeTime: 0
+  isFrozen: 0
+  renderer: {fileID: 0}
+  ice: {fileID: 0}
+  agent: {fileID: 0}
+  roamRadius: 10
+  counter: 0
+  target: {fileID: 0}
+  seeRange: 20
+  vegetables: []
+--- !u!114 &2618939665787838354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7471752754519663633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6e8a62997594b4fa680125e8fe73901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToChangeState: 3
+--- !u!195 &3867643815749193790
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7471752754519663633}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0.6
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!54 &545178663
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,7 +114,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &7471752754519663638
+--- !u!65 &545178659
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,21 +125,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.81, y: 0.64, z: 0.66}
+  m_Size: {x: 1.4, y: 1, z: 1.4}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2618939665787838354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7471752754519663633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e8a62997594b4fa680125e8fe73901, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToChangeState: 3
 --- !u!1 &7471752756029596003
 GameObject:
   m_ObjectHideFlags: 0

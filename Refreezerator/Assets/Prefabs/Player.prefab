@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84f96b3264d4f94e891740fe55b9759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {x: 0, y: 0, z: 0}
   movementSpeed: 7
   rb: {fileID: 7122546218790286540}
   fridge: {fileID: 7122546218790286541}
@@ -71,8 +72,8 @@ MonoBehaviour:
   lookingDirection: {x: 0, y: 0, z: 0}
   easteregg: {fileID: 0}
   lastKey: 0
-  slider: {fileID: 0}
   currentItemImage: {fileID: 0}
+  slider: {fileID: 0}
 --- !u!114 &7122546218790286541
 MonoBehaviour:
   m_ObjectHideFlags: 0

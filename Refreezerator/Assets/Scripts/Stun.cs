@@ -7,6 +7,8 @@ public class Stun : MonoBehaviour
     public float timeToChangeState;
     private bool isStunned;
 
+    private float getSpeed;
+
     private float stunTime;
     private new SpriteRenderer renderer;
 
@@ -20,10 +22,6 @@ public class Stun : MonoBehaviour
 
     private void Update()
     {
-        if (isStunned)
-        {
-            print(stunTime);
-        }
         if (stunTime > 0)
         {
             stunTime -= Time.deltaTime / timeToChangeState;
@@ -32,6 +30,14 @@ public class Stun : MonoBehaviour
         {
             isStunned = false;
             renderer.color = Color.white;
+            if (GetComponent<Lizard>() != null)
+            {
+                GetComponent<Lizard>().agent.speed = getSpeed;
+            }
+            else if (GetComponent<Lizard_Big>() != null)
+            {
+               // GetComponent<Lizard_Big>().agent.speed = getSpeed;
+            }
         }
     }
     
@@ -41,6 +47,14 @@ public class Stun : MonoBehaviour
         stunTime = 1;
         isStunned = true;
         renderer.color = Color.black;
+        if(GetComponent<Lizard>() != null)
+        {
+          getSpeed = GetComponent<Lizard>().agent.speed;
+        }
+        else if(GetComponent<Lizard_Big>() != null)
+        {
+           // getSpeed = GetComponent<Lizard_Big>().agent.speed;
+        }
 
     }
 
