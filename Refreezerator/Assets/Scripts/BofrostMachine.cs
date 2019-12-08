@@ -7,8 +7,8 @@ public class BofrostMachine : MonoBehaviour
     public static BofrostMachine instance;
     public GameObject prefab;
 	public List<GameObject> allTheVeggies = new List<GameObject>();
-public float spawningRate;
-private float currentSpawnTimer = 0;
+public float spawningRate = 10;
+private float currentSpawnTimer = 10;
     // Start is called before the first frame update
     private void Awake()
     {
