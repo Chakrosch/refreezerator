@@ -23,6 +23,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ColorPalette:
+        m_Texture: {fileID: 2800000, guid: 7e75a0f4ae62c0b679aec609dd8c5d73, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -66,7 +70,10 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _PaletteH: 1
+    - _PaletteW: 256
     - _Parallax: 0.02
+    - _PixelOffset: -1
     - _PixelsHorizontal: 0
     - _PixelsVertical: 0
     - _SmoothnessTextureChannel: 0
