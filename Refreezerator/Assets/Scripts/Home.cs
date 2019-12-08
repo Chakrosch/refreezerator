@@ -6,6 +6,10 @@ using UnityEngine;
 public class Home : MonoBehaviour
 {
     private static int veggieCount = 0;
+
+    public GameObject levelBlock1;
+    public GameObject levelBlock1a;
+    public GameObject levelBlock2;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +40,24 @@ public class Home : MonoBehaviour
         {
             veggieCount++;
             Destroy(other.gameObject);
-            print(veggieCount);
+            
+        }
+
+        switch (veggieCount)
+        {
+            case 1:
+                Destroy(levelBlock1);
+                Destroy(levelBlock1a);
+                break;
+            case 2:
+                Destroy(levelBlock2);
+                break;
+            default:
+                break;
+        }
+
+        {
+            
         }
     }
 }
