@@ -888,7 +888,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.22
+  m_Intensity: 0.25
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -982,6 +982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   postProcessingMat: {fileID: 2100000, guid: 46adb9023e289d947b218fe464b8a3a5, type: 2}
+  sunNightIntensity: 0.25
 --- !u!4 &163518030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7434176260875253876, guid: 7fe5e7215878e8a47bc457ab5065b8db,
@@ -3332,7 +3333,7 @@ GameObject:
   - component: {fileID: 780704263}
   - component: {fileID: 780704262}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9442,7 +9443,7 @@ PrefabInstance:
     - target: {fileID: 7878266538059907551, guid: e7fd5a5720f90fb48b7dcb205a7db024,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -449.29996
+      value: -449.29993
       objectReference: {fileID: 0}
     - target: {fileID: 7878266538059907551, guid: e7fd5a5720f90fb48b7dcb205a7db024,
         type: 3}
