@@ -972,7 +972,7 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.05
+    m_Bias: 1
     m_NormalBias: 0.4
     m_NearPlane: 0.2
     m_CullingMatrixOverride:
@@ -1004,7 +1004,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -9507,7 +9507,7 @@ PrefabInstance:
     - target: {fileID: 7878266538059907551, guid: e7fd5a5720f90fb48b7dcb205a7db024,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -449.29996
+      value: -449.29993
       objectReference: {fileID: 0}
     - target: {fileID: 7878266538059907551, guid: e7fd5a5720f90fb48b7dcb205a7db024,
         type: 3}
