@@ -71,7 +71,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _PaletteH: 1
-    - _PaletteW: 0
+    - _PaletteW: 256
     - _Parallax: 0.02
     - _PixelOffset: -1
     - _PixelsHorizontal: 0
