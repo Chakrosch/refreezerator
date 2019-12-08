@@ -10,12 +10,15 @@ public class ShaderCam : MonoBehaviour
 	private GameObject sun;
 	public float sunNightIntensity = 0.25f;
 	public float sunDayIntensity = 1f;
+	private DoubleAudioSource audioSource;
 	
     // Start is called before the first frame update
     void Start()
     {
 		torch = GameObject.Find("Torch");
 		sun = GameObject.Find("Sun");
+		audioSource = GetComponent<DoubleAudioSource>();
+		audioSource.CrossFade(0, 1, 1, 0);
     }
 
     // Update is called once per frame
@@ -29,10 +32,12 @@ public class ShaderCam : MonoBehaviour
 			if(intensity > sunDayIntensity - 0.1f)
 			{
 				sun.GetComponent<Light>().intensity = sunNightIntensity;
+				audioSource.CrossFade(1, 1, 1, 0);
 			}
 			else
 			{
 				sun.GetComponent<Light>().intensity = sunDayIntensity;
+				audioSource.CrossFade(0, 1, 1, 0);
 			}
 		}
     }
