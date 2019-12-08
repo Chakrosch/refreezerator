@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using System.IO;
+using UnityEditor.Animations;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -21,24 +23,31 @@ public class PlayerController : MonoBehaviour
     public KeyCode lastKey;
     public Image currentItemImage;
     public icicleSlider slider;
+    public Animator animator;
 
-void Start(){
+    private SpriteRenderer renderer;
+    private bool isWalking;
 
-	slider =  GameObject.Find("icicle").GetComponent<icicleSlider>();
+    void Start()
+    {
+        slider = GameObject.Find("icicle").GetComponent<icicleSlider>();
         currentItemImage = GameObject.Find("ItemSlot").GetComponent<Image>();
-	
-}
+        animator = GetComponentInChildren<Animator>();
+        renderer = GetComponentInChildren<SpriteRenderer>();
+    }
+
     void Update()
     {
         getInput();
         move();
-        if(fridge.currentObject != null) 
+        if (fridge.currentObject != null)
         {
             fridge.currentObject.transform.localPosition = Vector3.up;
         }
-        getDirection();
+
+        //getDirection();
         checkEasterEgg();
-        if(fridge.currentObject != null)
+        if (fridge.currentObject != null)
         {
             slider.value = 1 - fridge.currentObject.temperature;
         }
@@ -53,8 +62,11 @@ void Start(){
     /// </summary>
     private void getInput()
     {
+        Vector3 movement = Vector3.zero;
         movement.x = Input.GetAxis("Horizontal") * movementSpeed;
         movement.z = Input.GetAxis("Vertical") * movementSpeed;
+        Vector3 lookingDirection = getDirection(movement);
+
 
         throwVec = lookingDirection * throwForce;
 
@@ -69,6 +81,20 @@ void Start(){
                 pickUp();
             }
         }
+
+
+        bool walkChange = (movement.magnitude > 0) ^ isWalking;
+        isWalking = (movement.magnitude > 0);
+
+        bool lookChange = lookingDirection != this.lookingDirection;
+
+        this.lookingDirection = lookingDirection;
+        this.movement = movement;
+
+
+        animator.SetBool("change", walkChange || lookChange);
+
+        setAnimatorValues();
     }
 
     private void checkEasterEgg()
@@ -87,28 +113,21 @@ void Start(){
             easteregg.show();
         }
     }
-            private void getDirection()
+
+    private Vector3 getDirection(Vector3 movement)
     {
-        if(Input.GetAxis("Vertical") > 0)
+        if (movement.x == 0f && movement.z == 0f)
         {
-            lookingDirection.z = 1;
-            lookingDirection.x = 0;
+            return this.lookingDirection;
         }
-        else if (Input.GetAxis("Vertical") < 0)
+        if (Mathf.Abs(movement.z) > Mathf.Abs(movement.x))
         {
-            lookingDirection.z = -1;
-            lookingDirection.x = 0;
-        }
-        else if (Input.GetAxis("Horizontal") > 0)
+            return new Vector3(0, 0, Mathf.Sign(movement.z));
+        } else 
         {
-            lookingDirection.x = 1;
-            lookingDirection.z = 0;
+            return new Vector3(Mathf.Sign(movement.x), 0, 0);
         }
-        else if (Input.GetAxis("Horizontal") < 0)
-        {
-            lookingDirection.x = -1;
-            lookingDirection.z = 0;
-        }
+
     }
 
     /// <summary>
@@ -121,7 +140,7 @@ void Start(){
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.GetComponent<PickUpObject>() != null)
+        if (collision.gameObject.GetComponent<PickUpObject>() != null)
         {
             objectInRange = collision.gameObject.GetComponent<PickUpObject>();
         }
@@ -144,7 +163,7 @@ void Start(){
             fridge.currentObject.setInvisible(true);
             fridge.currentObject.setRigidbody(false);
             fridge.currentObject.transform.parent = transform;
-            fridge.currentObject.transform.localPosition = Vector3.down*100;
+            fridge.currentObject.transform.localPosition = Vector3.down * 100;
             fridge.currentObject.inFridge = true;
             Color c = currentItemImage.color;
             c.a = 1;
@@ -161,6 +180,7 @@ void Start(){
             fridge.currentObject.setFreeze(true);
             fridge.currentObject.throwObject();
         }
+
         fridge.currentObject.setRigidbody(true);
         fridge.currentObject.transform.parent = null;
         fridge.currentObject.inFridge = false;
@@ -171,21 +191,30 @@ void Start(){
         c.a = 0;
         currentItemImage.color = c;
     }
-	public static void GameOver()
-	{
-  //Highscore mechanic; execute on player death or return to safety		
-		WriteString();
-		Home.resetVeggieCount();
-		SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-	}
+
+    public static void GameOver()
+    {
+        //Highscore mechanic; execute on player death or return to safety		
+        WriteString();
+        Home.resetVeggieCount();
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
+
     static void WriteString()
     {
         string path = "Assets/highscore.txt";
 
         //Write some text to the test.txt file
         StreamWriter writer = new StreamWriter(path, true);
-        writer.WriteLine(Home.getVeggie()+";");
+        writer.WriteLine(Home.getVeggie() + ";");
         writer.Close();
     }
 
+    private void setAnimatorValues()
+    {
+        animator.SetBool("walking", movement.magnitude > 0.0);
+        animator.SetFloat("x", lookingDirection.x);
+        animator.SetFloat("z", lookingDirection.z);
+        renderer.flipX = lookingDirection.x < 0;
+    }
 }
