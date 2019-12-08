@@ -81,7 +81,8 @@ public class PickUpObject : MonoBehaviour
                 temperature = 0;
                 currentFreezeTime = maxFreezeTime;
                 isFrozen = true;
-                lizard.agent.enabled = false;
+				
+                if(lizard) lizard.agent.enabled = false;
                 
             }
         }
@@ -93,12 +94,12 @@ public class PickUpObject : MonoBehaviour
                 {    
                     setFreeze(false);
                     isFrozen = false;
-                    lizard.agent.enabled = true;
+                    if(lizard) lizard.agent.enabled = true;
                 }
                 if (temperature < 1)
                 {
                     temperature += Time.deltaTime / timeToChangeState;
-                    lizard.agent.speed = temperature * lizard.speed;
+                    if(lizard) lizard.agent.speed = temperature * lizard.speed;
 
                 }
             }

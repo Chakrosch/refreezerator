@@ -81,7 +81,7 @@ public class Lizard : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-        else if (collision.gameObject.tag == "Player" && player.fridge.currentObject.GetComponent<Vegetable>())
+        else if (collision.gameObject.tag == "Player" && player.fridge.full && player.fridge.currentObject.GetComponent<Vegetable>())
         {
             
             PlayerController.GameOver();
