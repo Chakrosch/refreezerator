@@ -11,7 +11,7 @@ using UnityEditor.Animations;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    private Vector3 movement; // Y-Axis should always be zero
+    public Vector3 movement; // Y-Axis should always be zero
     private Vector3 throwVec;
     public float movementSpeed;
     public Rigidbody rb;

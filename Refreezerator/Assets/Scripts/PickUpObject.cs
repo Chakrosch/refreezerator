@@ -99,7 +99,7 @@ public class PickUpObject : MonoBehaviour
     {
         print(other.name);
         print(isFrozen);
-        if (isFrozen && other.CompareTag("enemy"))
+        if (isFrozen && other.gameObject.tag == "enemy")
         {
             Stun stun = other.GetComponent<Stun>();
             print(stun);
