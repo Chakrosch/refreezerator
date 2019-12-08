@@ -103,8 +103,16 @@ public Sprite paprikaS;
            case vegetables.paprika:
                return paprikaS;
 
+<<<<<<< HEAD
            default:
                return null;
        }
    }
+=======
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+
+>>>>>>> 48e6405bc1021805ccff9d014cad5d7de84b40e9
 }
