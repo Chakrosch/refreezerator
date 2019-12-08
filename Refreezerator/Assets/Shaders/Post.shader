@@ -4,6 +4,9 @@
     {
         _MainTex ("Texture", 2D) = "white" {}
 		_PixelOffset("Pixel Offset", Range(-1, 1)) = 0.5
+		_ColorPalette("Color Palette", 2D) = "white" {}
+		_PaletteW("Palette Width", Int) = -1
+		_PaletteH("Palette Height", Int) = -1
     }
     SubShader
     {
@@ -39,6 +42,11 @@
 
 			float _PixelOffset;
 			float _OrthoSize;
+			
+			sampler2D _ColorPalette;
+			int _PaletteW;
+			int _PaletteH;
+			
             sampler2D _MainTex;
 
             fixed4 frag (v2f i) : SV_Target
@@ -55,7 +63,36 @@
 				float2 uv = (i.uv * cameraSize) / pixelSize;
 				uv = (float2(int(uv.x), int(uv.y)) * pixelSize + pixelSize * _PixelOffset)/cameraSize;
 				
-                return tex2D(_MainTex, uv);
+                fixed4 col =  tex2D(_MainTex, uv);
+				
+				
+				if(!(_PaletteH < 1 || _PaletteW < 1))
+				{
+					fixed4 paletteMatch = float4(1,1,1,1);
+					float matchDistance = 10;
+					
+					for(uint x = 0; x < _PaletteW; ++x)
+					{
+						for(uint y = 0; y < _PaletteH; ++y)
+						{
+							float2 uv = float2((x + 0.1) / _PaletteW, (y + 0.1) / _PaletteH);
+							
+							fixed4 paletteSample = tex2D(_ColorPalette, uv);
+								
+							float currentDistance = distance(col.rgb, paletteSample.rgb);
+							
+							if(currentDistance < matchDistance)
+							{
+								matchDistance = currentDistance;
+								paletteMatch.rgb = paletteSample.rgb;
+							}
+						}
+					}
+					
+					col.rgb = paletteMatch.rgb;
+				}
+				
+				return col;
             }
             ENDCG
         }
