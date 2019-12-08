@@ -29,7 +29,10 @@ public class PlayerController : MonoBehaviour
     private bool isWalking;
     private float isInteracting;
 	private AudioSource stepsSrc;
-    public AudioClip backMusic; 
+    public AudioClip backMusic;
+
+    private static Vector3 startPos;
+    private static PlayerController fakeThis;
 
     void Start()
     {
@@ -38,6 +41,8 @@ public class PlayerController : MonoBehaviour
 		stepsSrc = GameObject.Find("Player").GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
         renderer = GetComponentInChildren<SpriteRenderer>();
+        startPos = transform.position;
+        fakeThis = this;
     }
 
     void Update()
@@ -174,6 +179,7 @@ public class PlayerController : MonoBehaviour
             fridge.currentObject = objectInRange;
             objectInRange = null;
             fridge.currentObject.setInvisible(true);
+            fridge.currentObject.setFreeze(false);
             fridge.currentObject.setRigidbody(false);
             fridge.currentObject.transform.parent = transform;
             fridge.currentObject.transform.localPosition = Vector3.down * 100;
@@ -182,6 +188,8 @@ public class PlayerController : MonoBehaviour
             c.a = 1;
             currentItemImage.color = c;
             currentItemImage.sprite = fridge.currentObject.renderer.sprite;
+            fridge.full = true;
+            fridge.veggie = fridge.currentObject.GetComponent<Vegetable>() != null;
         }
     }
 
@@ -199,6 +207,8 @@ public class PlayerController : MonoBehaviour
         fridge.currentObject.inFridge = false;
         fridge.currentObject.rb.AddForce(throwVec, ForceMode.Impulse);
 
+        fridge.full = false;
+        fridge.veggie = false;
         fridge.currentObject = null;
         Color c = currentItemImage.color;
         c.a = 0;
@@ -207,10 +217,12 @@ public class PlayerController : MonoBehaviour
 
     public static void GameOver()
     {
+        fakeThis.transform.position = startPos;
         //Highscore mechanic; execute on player death or return to safety		
-        WriteString();
+        /*WriteString();
         Home.resetVeggieCount();
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        */
     }
 
     static void WriteString()
