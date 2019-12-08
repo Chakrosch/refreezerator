@@ -45,8 +45,9 @@ public class Lizard_Big : MonoBehaviour
             else
             {
                 BofrostMachine.instance.allTheVeggies.Remove(collision.gameObject);
-                Destroy(collision.gameObject);
-                Instantiate(PrefabManager.instance.getBabyLiz(), transform.position + transform.forward, Quaternion.identity);
+   //Enable following lines to breed small lizards if big liz eats veggies
+                //             Destroy(collision.gameObject);
+    //            Instantiate(PrefabManager.instance.getBabyLiz(), transform.position + transform.forward, Quaternion.identity);
             }
         }
         else if (stun.getStunned() && collision.gameObject.tag == "Player")
