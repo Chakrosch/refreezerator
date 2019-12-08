@@ -202,6 +202,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c642c8fbe3e82cb218a34ab7db69922f, type: 3}
+--- !u!1 &125298322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 125298324}
+  - component: {fileID: 125298323}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &125298323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125298322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38089de151591cb43a2198d4d54d9223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites: []
+--- !u!4 &125298324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125298322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.660443, y: -1.1898165, z: -7.4082966}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &211262682
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,7 +924,7 @@ PrefabInstance:
     - target: {fileID: 7788998483573471566, guid: c642c8fbe3e82cb218a34ab7db69922f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.78
+      value: -17.13
       objectReference: {fileID: 0}
     - target: {fileID: 7788998483573471566, guid: c642c8fbe3e82cb218a34ab7db69922f,
         type: 3}
@@ -890,7 +934,7 @@ PrefabInstance:
     - target: {fileID: 7788998483573471566, guid: c642c8fbe3e82cb218a34ab7db69922f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.09
+      value: -11.51
       objectReference: {fileID: 0}
     - target: {fileID: 7788998483573471566, guid: c642c8fbe3e82cb218a34ab7db69922f,
         type: 3}
