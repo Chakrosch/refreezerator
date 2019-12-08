@@ -224,4 +224,6 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("z", lookingDirection.z);
         renderer.flipX = lookingDirection.x < 0;
     }
+
+   
 }
