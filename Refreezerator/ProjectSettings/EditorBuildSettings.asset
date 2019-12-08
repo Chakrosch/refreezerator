@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d6f87ae2e2ccd8c40ac4e709d3230ba0
   - enabled: 1
-    path: Assets/Scenes/TestScene_Georg .unity
-    guid: 1a5f066f0b23ee742a2a3df2be7a51ac
-  - enabled: 1
     path: Assets/Scenes/Level01.unity
     guid: acbdf3a6e882b57459877805a7081514
   m_configObjects: {}
