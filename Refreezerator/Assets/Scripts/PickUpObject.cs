@@ -120,8 +120,6 @@ public class PickUpObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.name);
-        print(isFrozen);
         if (isFrozen && other.gameObject.tag == "enemy")
         {
             Stun stun = other.GetComponent<Stun>();
