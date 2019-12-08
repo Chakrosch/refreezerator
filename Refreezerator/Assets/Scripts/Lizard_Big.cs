@@ -13,7 +13,6 @@ public class Lizard_Big : MonoBehaviour
     public Transform target;
     public float seeRange;
     public static PlayerController player;
-    public List<Vegetable> vegetables;
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +21,6 @@ public class Lizard_Big : MonoBehaviour
         agent = this.GetComponent<NavMeshAgent>();
         stun = this.GetComponent<Stun>();
         agent.updateRotation = false;
-        
-        Vegetable[] vegs = GameObject.FindObjectsOfType<Vegetable>();
-        foreach (Vegetable item in vegs)
-        {
-            vegetables.Add(item);
-        }
-
     }
 
     // Update is called once per frame
@@ -52,10 +44,9 @@ public class Lizard_Big : MonoBehaviour
             }
             else
             {
-                Instantiate(PrefabManager.instance.babyLizardPrefab, transform.position, Quaternion.identity);
-                vegetables.Remove(collision.gameObject.GetComponent<Vegetable>());
+                BofrostMachine.instance.allTheVeggies.Remove(collision.gameObject);
                 Destroy(collision.gameObject);
-                Destroy(this.gameObject);
+                Instantiate(PrefabManager.instance.getBabyLiz(), transform.position + transform.forward, Quaternion.identity);
             }
         }
         else if (collision.gameObject.tag == "Player")
@@ -68,11 +59,11 @@ public class Lizard_Big : MonoBehaviour
     {
         int smallestIndex = 0;
         float smallestDist = Mathf.Infinity;
-        for (int i = 0; i < vegetables.Count; i++)
+        for (int i = 0; i < BofrostMachine.instance.allTheVeggies.Count; i++)
         {
-            if (smallestDist > Vector3.Distance(vegetables[i].transform.position, transform.position))
+            if (smallestDist > Vector3.Distance(BofrostMachine.instance.allTheVeggies[i].transform.position, transform.position))
             {
-                smallestDist = Vector3.Distance(vegetables[i].transform.position, transform.position);
+                smallestDist = Vector3.Distance(BofrostMachine.instance.allTheVeggies[i].transform.position, transform.position);
                 smallestIndex = i;
             }
         }
@@ -89,7 +80,7 @@ public class Lizard_Big : MonoBehaviour
         {
             if (smallestDist <= seeRange)
             {
-                target = vegetables[smallestIndex].transform;
+                target = BofrostMachine.instance.allTheVeggies[smallestIndex].transform;
             }
         }
     }

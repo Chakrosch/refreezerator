@@ -18,4 +18,14 @@ public class PrefabManager : MonoBehaviour
             instance = this;
         }
     }
+
+    public GameObject getBigLiz()
+    {
+        return bigLizardPrefab;
+    }
+
+    public GameObject getBabyLiz()
+    {
+        return babyLizardPrefab;
+    }
 }

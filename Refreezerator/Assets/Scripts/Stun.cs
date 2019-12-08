@@ -36,7 +36,7 @@ public class Stun : MonoBehaviour
             }
             else if (GetComponent<Lizard_Big>() != null)
             {
-               // GetComponent<Lizard_Big>().agent.speed = getSpeed;
+               GetComponent<Lizard_Big>().agent.speed = getSpeed;
             }
         }
     }
@@ -50,10 +50,12 @@ public class Stun : MonoBehaviour
         if(GetComponent<Lizard>() != null)
         {
           getSpeed = GetComponent<Lizard>().agent.speed;
+          GetComponent<Lizard>().agent.speed = 0;
         }
         else if(GetComponent<Lizard_Big>() != null)
         {
-           // getSpeed = GetComponent<Lizard_Big>().agent.speed;
+           getSpeed = GetComponent<Lizard_Big>().agent.speed;
+            GetComponent<Lizard_Big>().agent.speed = 0;
         }
 
     }

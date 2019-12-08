@@ -13,27 +13,35 @@ public class Lizard : PickUpObject
     public Transform target;
     public float seeRange;
     public static PlayerController player;
-    public List<Vegetable> vegetables;
+    private float countdown;
+    private bool finished;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         agent = this.GetComponent<NavMeshAgent>();
         stun = this.GetComponent<Stun>();
         agent.updateRotation = false;
-        
-        Vegetable[] vegs = GameObject.FindObjectsOfType<Vegetable>();
-        foreach (Vegetable item in vegs)
-        {
-            vegetables.Add(item);
-        }
-
+        agent.speed = 0f;
+        rb.useGravity = false;
+        GetComponent<Collider>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {if (countdown > 0)
+        {
+            countdown -= Time.deltaTime;
+        }
+    if(countdown <= 0 && !finished)
+        {
+            finished = true;
+            agent.speed = 3.5f;
+            GetComponent<Collider>().enabled = true;
+            rb.useGravity = true;
+        }
         CheckNearby();
         DoMovement();
         if(counter > 0)
@@ -52,14 +60,11 @@ public class Lizard : PickUpObject
             }
             else
             {
-                Instantiate(PrefabManager.instance.bigLizardPrefab, transform.position, Quaternion.identity);
+                BofrostMachine.instance.allTheVeggies.Remove(collision.gameObject);
                 Destroy(collision.gameObject);
+                Instantiate(PrefabManager.instance.getBigLiz(), transform.position + transform.forward, Quaternion.identity);
                 Destroy(this.gameObject);
             }
-        }
-        else if (collision.gameObject.tag == "Player")
-        {
-            PlayerController.GameOver();
         }
     }
 
@@ -67,11 +72,11 @@ public class Lizard : PickUpObject
     {
         int smallestIndex = 0;
         float smallestDist = Mathf.Infinity;
-        for (int i = 0; i < vegetables.Count; i++)
+        for (int i = 0; i < BofrostMachine.instance.allTheVeggies.Count; i++)
         {
-            if (smallestDist > Vector3.Distance(vegetables[i].transform.position, transform.position))
+            if (smallestDist > Vector3.Distance(BofrostMachine.instance.allTheVeggies[i].transform.position, transform.position))
             {
-                smallestDist = Vector3.Distance(vegetables[i].transform.position, transform.position);
+                smallestDist = Vector3.Distance(BofrostMachine.instance.allTheVeggies[i].transform.position, transform.position);
                 smallestIndex = i;
             }
         }
@@ -88,7 +93,7 @@ public class Lizard : PickUpObject
         {
             if (smallestDist <= seeRange)
             {
-                target = vegetables[smallestIndex].transform;
+                target = BofrostMachine.instance.allTheVeggies[smallestIndex].transform;
             }
         }
     }

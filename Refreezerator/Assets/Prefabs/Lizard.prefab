@@ -65,8 +65,7 @@ MonoBehaviour:
   roamRadius: 0
   counter: 0
   target: {fileID: 0}
-  seeRange: 0
-  vegetables: []
+  seeRange: 10
 --- !u!195 &2062591471
 NavMeshAgent:
   m_ObjectHideFlags: 0

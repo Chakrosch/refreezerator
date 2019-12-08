@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class BofrostMachine : MonoBehaviour
 {
+    public static BofrostMachine instance;
     public GameObject prefab;
 	public List<GameObject> allTheVeggies = new List<GameObject>();
 public float spawningRate;
 private float currentSpawnTimer = 0;
     // Start is called before the first frame update
-    public void Start()
+    private void Awake()
     {
-        
+     if(instance == null)
+        {
+            instance = this;
+        }   
     }
 
     // Update is called once per frame
