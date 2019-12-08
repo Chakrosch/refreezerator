@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3055487592674523732}
   - component: {fileID: 6285973371003158626}
   - component: {fileID: 288452557947190427}
-  - component: {fileID: 5602569212419691588}
+  - component: {fileID: 1773034697261503463}
   m_Layer: 0
   m_Name: pyramid_01
   m_TagString: Untagged
@@ -80,8 +80,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5602569212419691588
-BoxCollider:
+--- !u!64 &1773034697261503463
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,6 +90,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.6125755, y: 5.545561, z: 3.1950762}
-  m_Center: {x: -0.04166901, y: 0.027306793, z: 1.5236331}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2811033929072111635, guid: adb3b8a4ec2fa3943a5b7c2a9ed30c51, type: 3}
