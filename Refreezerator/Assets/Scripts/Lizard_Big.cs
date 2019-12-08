@@ -36,9 +36,9 @@ public class Lizard_Big : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<PickUpObject>() != null)
+        if (collision.gameObject.GetComponent<Vegetable>() != null)
         {
-            if (collision.gameObject.GetComponent<PickUpObject>().isFrozen)
+            if (collision.gameObject.GetComponent<Vegetable>().isFrozen)
             {
                 stun.stun();
             }
