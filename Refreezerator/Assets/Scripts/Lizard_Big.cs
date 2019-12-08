@@ -1,168 +1,123 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Lizard_Big : MonoBehaviour
 {
-    private float direction_change_timer = 5f;
-    public Rigidbody rb;
-    public float speed;
-    public int chaseDistance;
-    private bool playerNearby = false;
-    public GameObject player;
-    private int layerMask = 1 << 10;
-    private Stun stun;
+    public NavMeshAgent agent;
+    Stun stun;
+    Vegetable nearestVeg;
+    public float roamRadius;
+    public float counter;
+    public Transform target;
+    public float seeRange;
+    public static PlayerController player;
+    public List<Vegetable> vegetables;
 
-
-// Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
+        agent = this.GetComponent<NavMeshAgent>();
         stun = this.GetComponent<Stun>();
-        layerMask = ~layerMask; //bitshift for collision with everything except layer 10 (player)
+        agent.updateRotation = false;
+        
+        Vegetable[] vegs = GameObject.FindObjectsOfType<Vegetable>();
+        foreach (Vegetable item in vegs)
+        {
+            vegetables.Add(item);
+        }
+
     }
 
-// Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
-        updatePlayerDistance();
-        if (!stun.getStunned())
+        CheckNearby();
+        DoMovement();
+        if(counter > 0)
         {
-            if (playerNearby)
-            {
-                ChaseMove();
-            }
-            else
-            {
-                IdleMove();
-            }    
+            counter -= Time.deltaTime;
         }
     }
 
-    void ChaseMove()
+    private void OnCollisionEnter(Collision collision)
     {
-        bool walkAround = false;
-        Vector3 dir = player.transform.position - this.transform.position;
-        // Debug.DrawRay( transform.position+new Vector3(0,0,0.5f),  dir,  Color.green,   1.0f,  false);
-        if (Physics.Raycast(transform.position + new Vector3(0, 0, 0.5f), dir, 2, layerMask)
-            || Physics.Raycast(transform.position - new Vector3(0, 0, 0.5f), dir, 2, layerMask)
-            || Physics.Raycast(transform.position + new Vector3(0.5f, 0, 0), dir, 2, layerMask)
-            || Physics.Raycast(transform.position + new Vector3(0.5f, 0, 0), dir, 2, layerMask))
+        if (collision.gameObject.GetComponent<PickUpObject>() != null)
         {
-            Vector3 movement = new Vector3(
-                player.transform.position.x - this.transform.position.x,
-                player.transform.position.y - this.transform.position.y,
-                player.transform.position.z - this.transform.position.z
-            );
-            movement = Vector3.Normalize(movement);
-            if (walkAround)
+            if (collision.gameObject.GetComponent<PickUpObject>().isFrozen)
             {
-                movement = WalkAround();
-            }
-
-            rb.velocity = movement * speed;
-        }
-    }
-
-    void IdleMove()
-        {
-            if (direction_change_timer >= 5f)
-            {
-                direction_change_timer = 0f;
-                int dir = Random.Range(0, 4);
-
-                if (dir == 0)
-                {
-                    rb.velocity = new Vector3(0, 0, 0);
-                }
-                else if (dir == 1)
-                {
-                    rb.velocity = new Vector3(1, 0, 1) * speed;
-                }
-                else if (dir == 2)
-                {
-                    rb.velocity = new Vector3(-1, 0, 1) * speed;
-                }
-                else if (dir == 3)
-                {
-                    rb.velocity = new Vector3(-1, 0, 1) * speed;
-                }
-                else
-                {
-                    rb.velocity = new Vector3(-1, 0, -1) * speed;
-                }
-            }
-
-            direction_change_timer += Time.deltaTime;
-        }
-
-    private void updatePlayerDistance()
-        {
-            if (Vector3.Distance(player.transform.position, this.transform.position) < chaseDistance)
-            {
-                playerNearby = true;
+                stun.stun();
             }
             else
             {
-                playerNearby = false;
+                Instantiate(PrefabManager.instance.babyLizardPrefab, transform.position, Quaternion.identity);
+                vegetables.Remove(collision.gameObject.GetComponent<Vegetable>());
+                Destroy(collision.gameObject);
+                Destroy(this.gameObject);
             }
         }
-
-        Vector3 WalkAround()
+        else if (collision.gameObject.tag == "Player")
         {
-            float a = player.transform.position.x - this.transform.position.x;
-            float b = player.transform.position.y - this.transform.position.y;
-            //Bestimmt die beiden Richtungen in der sich d Player befindet. Raycastet nach der blockierenden wand und läuft in die andere Richtung.
-            if (a > 0 && b > 0)
-            {
-                if (Physics.Raycast(transform.position + new Vector3(0, 0, 0.5f), new Vector3(1, 0, 0), 2, layerMask))
-                {
-                    Debug.Log("oben");
-                    return new Vector3(0, 0, 1);
-                }
-
-                Debug.Log("rechts1");
-                return new Vector3(1, 0, 0);
-            }
-            else if (a <= 0 && b > 0)
-            {
-                if (Physics.Raycast(transform.position + new Vector3(0, 0, 0.5f), new Vector3(-1, 0, 0), 2, layerMask))
-                {
-                    Debug.Log("links");
-                    return new Vector3(-1, 0, 0);
-                }
-
-                Debug.Log("oben");
-                return new Vector3(0, 0, 1);
-            }
-            else if (a > 0 && b <= 0)
-            {
-                if (Physics.Raycast(transform.position + new Vector3(0, 0, 0.5f), new Vector3(1, 0, 0), 2, layerMask))
-                {
-                    Debug.Log("unten");
-                    return new Vector3(0, 0, -1);
-                }
-
-                Debug.Log("rechts2");
-                return new Vector3(1, 0, 0);
-            }
-            else if (a <= 0 && b <= 0)
-            {
-                if (Physics.Raycast(transform.position + new Vector3(0, 0, 0.5f), new Vector3(-1, 0, 0), 2, layerMask))
-                {
-                    Debug.Log("unten");
-                    return new Vector3(0, 0, -1);
-                }
-
-                Debug.Log("links");
-                return new Vector3(-1, 0, 0);
-            }
-
-            return new Vector3(0, 10, 0); //sollte nie erreicht werden, wenn doch fliegt biggus echsus jetzt zum Mond
-        }
-        void OnCollisionEnter(Collision collision)
-        {
-            Debug.Log(collision);
-            if (collision.gameObject.tag == "Player"){
-                PlayerController.GameOver();}
+            PlayerController.GameOver();
         }
     }
+
+    void CheckNearby()
+    {
+        int smallestIndex = 0;
+        float smallestDist = Mathf.Infinity;
+        for (int i = 0; i < vegetables.Count; i++)
+        {
+            if (smallestDist > Vector3.Distance(vegetables[i].transform.position, transform.position))
+            {
+                smallestDist = Vector3.Distance(vegetables[i].transform.position, transform.position);
+                smallestIndex = i;
+            }
+        }
+
+        if (smallestDist > Vector3.Distance(player.transform.position, transform.position))
+        {
+            smallestDist = Vector3.Distance(player.transform.position, transform.position);
+            if (smallestDist <= seeRange)
+            {
+                target = player.transform;
+            }
+        }
+        else
+        {
+            if (smallestDist <= seeRange)
+            {
+                target = vegetables[smallestIndex].transform;
+            }
+        }
+    }
+
+    public void DoMovement()
+    {
+        if(target != null)
+        {
+            agent.SetDestination(target.position);
+        }else
+        {
+            if (counter <= 0)
+            {
+                FreeRoam();
+                counter = Random.Range(2f, 4f);
+            }
+        }
+    }
+
+    void FreeRoam()
+    {
+        {
+            Vector3 randomDirection = Random.insideUnitSphere * roamRadius;
+            randomDirection += transform.position;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomDirection, out hit, roamRadius, 1);
+            Vector3 finalPosition = hit.position;
+            agent.destination = finalPosition;
+        }
+    }
+}

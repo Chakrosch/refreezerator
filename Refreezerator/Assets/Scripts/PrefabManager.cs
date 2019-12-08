@@ -8,10 +8,8 @@ public class PrefabManager : MonoBehaviour
 
     public static PrefabManager instance;
 
-    public GameObject[] vegetables;
-    public GameObject[] enemies;
-    public GameObject[] player;
-    public GameObject[] alcohol;
+    public GameObject bigLizardPrefab;
+    public GameObject babyLizardPrefab;
 
     private void Awake()
     {
