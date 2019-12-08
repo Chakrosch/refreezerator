@@ -2,40 +2,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PickUpObject : MonoBehaviour
 {
     public Rigidbody rb;
-    public float temperature = 0;
+    public float temperature { get; private set; } = 1;
     public bool inFridge;
     public float timeToChangeState;
     public float maxFreezeTime;
     public float currentFreezeTime;
     public bool isFrozen;
-    public new SpriteRenderer renderer;
+    public SpriteRenderer renderer;
     public GameObject ice;
 
     private float distance = 0.6f;
-
+    private int ogLayer;
+    private Lizard lizard;
     
-    private bool isFlying;
+    public bool isFlying { get; private set; } = false;
 
     // Start is called before the first frame update
     public void Start()
     {
+        renderer = GetComponentInChildren<SpriteRenderer>();
+        rb = GetComponent<Rigidbody>();
         setUpIce();
         setFreeze(false);
         isFrozen = false;
+        ogLayer = gameObject.layer;
+        lizard = GetComponent<Lizard>();
     }
 
     // Update is called once per frame
 
-    void Update()
+    public void Update()
     {
         setTemperature();
-
         setFlying();
+        if (temperature > 0)
+        {
+            var col = renderer.color;
+            col.a = temperature;
+            renderer.color = 
+                new Color(
+                    temperature / 2 + 0.5f,
+                    renderer.color.g,
+                    renderer.color.b,
+                    renderer.color.a);
+
+        }
     }
 
     public void setInvisible(bool invisible)
@@ -64,6 +81,8 @@ public class PickUpObject : MonoBehaviour
                 temperature = 0;
                 currentFreezeTime = maxFreezeTime;
                 isFrozen = true;
+                lizard.agent.enabled = false;
+                
             }
         }
         else
@@ -74,10 +93,13 @@ public class PickUpObject : MonoBehaviour
                 {    
                     setFreeze(false);
                     isFrozen = false;
+                    lizard.agent.enabled = true;
                 }
                 if (temperature < 1)
                 {
                     temperature += Time.deltaTime / timeToChangeState;
+                    lizard.agent.speed = temperature * lizard.speed;
+
                 }
             }
             else
@@ -121,7 +143,7 @@ public class PickUpObject : MonoBehaviour
             {
                 if (hit.collider.CompareTag("floor") && hit.distance < distance)
                 {
-                    gameObject.layer = 8;
+                    gameObject.layer = ogLayer;
                     isFlying = false;
                 }
             }

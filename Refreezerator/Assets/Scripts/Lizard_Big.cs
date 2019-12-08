@@ -49,7 +49,7 @@ public class Lizard_Big : MonoBehaviour
                 Instantiate(PrefabManager.instance.getBabyLiz(), transform.position + transform.forward, Quaternion.identity);
             }
         }
-        else if (collision.gameObject.tag == "Player")
+        else if (stun.getStunned() && collision.gameObject.tag == "Player")
         {
             PlayerController.GameOver();
         }
