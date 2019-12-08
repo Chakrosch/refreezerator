@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Turntable : MonoBehaviour
 {
-    public float speed = 1f;
+    public Vector3 speed = new Vector3(0f,1f,0f);
 
     void Update()
     {
-        this.transform.Rotate(new Vector3(0,Time.deltaTime * speed,0));
+        this.transform.Rotate(Time.deltaTime*speed);
     }
 }
