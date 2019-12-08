@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using System.IO;
-using UnityEditor.Animations;
+using UnityEngine.Animations;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
