@@ -28,11 +28,14 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer renderer;
     private bool isWalking;
     private float isInteracting;
+	private AudioSource stepsSrc;
+    public AudioClip backMusic; 
 
     void Start()
     {
         slider = GameObject.Find("icicle").GetComponent<icicleSlider>();
         currentItemImage = GameObject.Find("ItemSlot").GetComponent<Image>();
+		stepsSrc = GameObject.Find("Player").GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
         renderer = GetComponentInChildren<SpriteRenderer>();
     }
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         getInput();
         move();
+
         if (fridge.currentObject != null)
         {
             fridge.currentObject.transform.localPosition = Vector3.up;
@@ -143,6 +147,8 @@ public class PlayerController : MonoBehaviour
     private void move()
     {
         rb.velocity = movement;
+
+		stepsSrc.loop = isWalking;
     }
 
     private void OnCollisionEnter(Collision collision)
