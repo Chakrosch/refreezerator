@@ -7,7 +7,7 @@ public class Bofroster : MonoBehaviour
     public float spawningRate = 30;
     private float currentSpawnTimer = 1000;
 
-    private GameObject myVeggie = null;
+    public GameObject myVeggie = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +20,9 @@ public class Bofroster : MonoBehaviour
         if (myVeggie == null){
         currentSpawnTimer = currentSpawnTimer+ Time.deltaTime;
         if (currentSpawnTimer >= spawningRate)
-        {
-             myVeggie = (GameObject) Instantiate(prefab, new Vector3(0, 5, 0), Quaternion.identity);
+        { 
+            //Debug.Log("testydaSasdadsads");
+             myVeggie = (GameObject) Instantiate(prefab, transform.position, Quaternion.identity);
              currentSpawnTimer = 0 + Random.Range(0, 5);
         }
         }
