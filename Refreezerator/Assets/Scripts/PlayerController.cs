@@ -185,11 +185,11 @@ public class PlayerController : MonoBehaviour
         if (fridge.currentObject.isFrozen)
         {
             fridge.currentObject.setFreeze(true);
-            fridge.currentObject.throwObject();
         }
-
+        fridge.currentObject.throwObject();
         fridge.currentObject.setRigidbody(true);
         fridge.currentObject.transform.parent = null;
+        fridge.currentObject.transform.position = fridge.currentObject.transform.position + transform.forward;
         fridge.currentObject.inFridge = false;
         fridge.currentObject.rb.AddForce(throwVec, ForceMode.Impulse);
 

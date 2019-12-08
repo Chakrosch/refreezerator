@@ -62,10 +62,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  roamRadius: 0
+  roamRadius: 4
   counter: 0
   target: {fileID: 0}
-  seeRange: 10
+  seeRange: 6
 --- !u!195 &2062591471
 NavMeshAgent:
   m_ObjectHideFlags: 0
