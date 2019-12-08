@@ -24,17 +24,14 @@ public class PlayerParticleSystem : MonoBehaviour
 
     void Update()
     {
-        eMod.rateOverTime = maxParticleEmittance * player.movementSpeed * Mathf.Abs(player.movement.x + player.movement.y + player.movement.z)/3;
+        eMod.rateOverTime = maxParticleEmittance * player.movementSpeed * (Mathf.Abs(player.movement.x) + Mathf.Abs(player.movement.y) + Mathf.Abs(player.movement.z)) / 3;
+
+        RaycastHit hit;
+        Physics.Raycast(player.gameObject.transform.position, -Vector3.up, out hit);
+        if (hit.collider.CompareTag("water"))
+            mMod.startColor = onWater;
+        else
+            mMod.startColor = onDust;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("water"))
-            mMod.startColor = onWater;     
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        mMod.startColor = onDust;
-    }
 }
