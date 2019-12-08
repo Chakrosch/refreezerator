@@ -69,17 +69,29 @@ public class PlayerController : MonoBehaviour
     private void getInput()
     {
         Vector3 movement = Vector3.zero;
-        movement.x = Input.GetAxis("Horizontal") * movementSpeed;
-        movement.z = Input.GetAxis("Vertical") * movementSpeed;
+        movement.x = Input.GetAxis("Horizontal");
+        movement.z = Input.GetAxis("Vertical");
+        movement = movement.normalized;
         Vector3 lookingDirection = getDirection(movement);
 
 
-        throwVec = lookingDirection * throwForce;
-        if (Input.GetButtonDown("Interact"))
+        if (movement.magnitude > 0.1)
+        {
+            throwVec = movement.normalized * throwForce;
+            
+        }
+
+        movement *= movementSpeed;
+        
+        bool doesInteract = Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Interact");
+        if (doesInteract)
         {
             if (fridge.currentObject != null)
             {
+                print(movement);
+
                 throwOut();
+                print(movement);
             }
             else
             {
@@ -90,7 +102,6 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        bool doesInteract = Input.GetButtonDown("Interact");
 
         bool walkChange = (movement.magnitude > 0) ^ isWalking;
         isWalking = (movement.magnitude > 0);
@@ -197,8 +208,9 @@ public class PlayerController : MonoBehaviour
         fridge.currentObject.throwObject();
         fridge.currentObject.setRigidbody(true);
         fridge.currentObject.transform.parent = null;
-        fridge.currentObject.transform.position = fridge.currentObject.transform.position + lookingDirection;
+        fridge.currentObject.transform.position = fridge.currentObject.transform.position + this.movement.normalized;
         fridge.currentObject.inFridge = false;
+        print(throwVec);
         fridge.currentObject.rb.AddForce(throwVec, ForceMode.Impulse);
 
         fridge.full = false;
@@ -211,6 +223,10 @@ public class PlayerController : MonoBehaviour
 
     public static void GameOver()
     {
+        if (fakeThis.fridge.full)
+        {
+            fakeThis.throwOut();
+        }
         fakeThis.transform.position = startPos;
         //Highscore mechanic; execute on player death or return to safety		
         /*WriteString();
