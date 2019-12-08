@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer renderer;
     private bool isWalking;
     private float isInteracting;
-	private AudioSource stepsSrc;
-    public AudioClip backMusic;
 
     private static Vector3 startPos;
     private static PlayerController fakeThis;
@@ -38,7 +36,6 @@ public class PlayerController : MonoBehaviour
     {
         slider = GameObject.Find("icicle").GetComponent<icicleSlider>();
         currentItemImage = GameObject.Find("ItemSlot").GetComponent<Image>();
-		stepsSrc = GameObject.Find("Player").GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
         renderer = GetComponentInChildren<SpriteRenderer>();
         startPos = transform.position;
@@ -152,8 +149,6 @@ public class PlayerController : MonoBehaviour
     private void move()
     {
         rb.velocity = movement;
-
-		stepsSrc.loop = isWalking;
     }
 
     private void OnCollisionEnter(Collision collision)

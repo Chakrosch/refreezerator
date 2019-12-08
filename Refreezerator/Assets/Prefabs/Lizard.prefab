@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  roamRadius: 4
+  roamRadius: 0
   counter: 0
   target: {fileID: 0}
   seeRange: 6
