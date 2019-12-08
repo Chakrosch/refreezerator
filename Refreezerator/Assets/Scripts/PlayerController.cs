@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer renderer;
     private bool isWalking;
+    private float isInteracting;
 
     void Start()
     {
@@ -69,7 +70,6 @@ public class PlayerController : MonoBehaviour
 
 
         throwVec = lookingDirection * throwForce;
-
         if (Input.GetButtonDown("Interact"))
         {
             if (fridge.currentObject != null)
@@ -80,20 +80,27 @@ public class PlayerController : MonoBehaviour
             {
                 pickUp();
             }
-        }
 
+            isInteracting = 0.2f;
+        }
+        
+
+        bool doesInteract = Input.GetButtonDown("Interact");
 
         bool walkChange = (movement.magnitude > 0) ^ isWalking;
         isWalking = (movement.magnitude > 0);
 
         bool lookChange = lookingDirection != this.lookingDirection;
+        if (isInteracting > 0)
+        {
+            isInteracting -= Time.deltaTime;
+        }
 
         this.lookingDirection = lookingDirection;
         this.movement = movement;
 
-
-        animator.SetBool("change", walkChange || lookChange);
-
+        animator.SetFloat("interact", isInteracting);
+        animator.SetBool("change", walkChange || lookChange || doesInteract);
         setAnimatorValues();
     }
 
