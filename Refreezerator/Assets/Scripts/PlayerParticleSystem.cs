@@ -14,6 +14,7 @@ public class PlayerParticleSystem : MonoBehaviour
     private ParticleSystem.EmissionModule eMod;
     private ParticleSystem.MainModule mMod;
     private PlayerController player;
+
     void Start()
     {
         ParticleSystem pSys = GetComponent<ParticleSystem>();
@@ -27,14 +28,11 @@ public class PlayerParticleSystem : MonoBehaviour
         eMod.rateOverTime = maxParticleEmittance * player.movementSpeed * Mathf.Abs(player.movement.x + player.movement.y + player.movement.z)/3;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("water"))
-            mMod.startColor = onWater;     
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        mMod.startColor = onDust;
+        if (other.CompareTag("floor"))
+            mMod.startColor = onDust;
+        else
+            mMod.startColor = onWater;
     }
 }
