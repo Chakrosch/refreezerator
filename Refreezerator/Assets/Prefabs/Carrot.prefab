@@ -73,6 +73,12 @@ MonoBehaviour:
   renderer: {fileID: 7788998483652857533}
   ice: {fileID: 8801215924828509567, guid: cb309190b0df2f3919bc24d69fb83812, type: 3}
   type: 0
+  carrotS: {fileID: 21300000, guid: bc31575e164f2a141830883fc5bf900d, type: 3}
+  broccoliS: {fileID: 21300000, guid: 9ff810deb8e3b7342ade5a05114e7e63, type: 3}
+  eggplantS: {fileID: 21300000, guid: b993c763683c9074685a2c2110c9b33d, type: 3}
+  cornS: {fileID: 21300000, guid: 2dec94a94bca21d42a5641290cda7cd7, type: 3}
+  tomatoS: {fileID: 21300000, guid: bc14b0dfce1022a49927e17d4ba48bba, type: 3}
+  paprikaS: {fileID: 21300000, guid: 1c2105f951c38484d9a011be635189ee, type: 3}
 --- !u!65 &7788998483573471567
 BoxCollider:
   m_ObjectHideFlags: 0
