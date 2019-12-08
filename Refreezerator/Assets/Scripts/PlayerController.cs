@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private bool isWalking;
     private float isInteracting;
 	private AudioSource stepsSrc;
+    public AudioClip backMusic; 
 
     void Start()
     {

@@ -1010,6 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   postProcessingMat: {fileID: 2100000, guid: 46adb9023e289d947b218fe464b8a3a5, type: 2}
+  sunNightIntensity: 0.25
 --- !u!4 &163518030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7434176260875253876, guid: 7fe5e7215878e8a47bc457ab5065b8db,
