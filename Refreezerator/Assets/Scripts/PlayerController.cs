@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using System.IO;
-using UnityEditor.Animations;
+using UnityEngine.Animations;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -224,6 +224,10 @@ public class PlayerController : MonoBehaviour
 
     public static void GameOver()
     {
+        if (fakeThis.fridge.full)
+        {
+            fakeThis.throwOut();
+        }
         fakeThis.transform.position = startPos;
         //Highscore mechanic; execute on player death or return to safety		
         /*WriteString();
