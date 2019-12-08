@@ -8,6 +8,7 @@ using UnityEngine.AI;
 public class PickUpObject : MonoBehaviour
 {
     public Rigidbody rb;
+    private Collider collider;
     public float temperature { get; private set; } = 1;
     public bool inFridge;
     public float timeToChangeState;
@@ -33,7 +34,8 @@ public class PickUpObject : MonoBehaviour
         isFrozen = false;
         ogLayer = gameObject.layer;
         lizard = GetComponent<Lizard>();
-    }
+        this.collider = GetComponent<Collider>();
+}
 
     // Update is called once per frame
 
@@ -144,6 +146,7 @@ public class PickUpObject : MonoBehaviour
                 {
                     gameObject.layer = ogLayer;
                     isFlying = false;
+                    this.collider.enabled = true;
                 }
             }
         }
@@ -162,5 +165,6 @@ public class PickUpObject : MonoBehaviour
     {
         gameObject.layer = 11;
         isFlying = true;
+        this.collider.enabled = false;
     }
 }

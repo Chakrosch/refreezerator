@@ -211,7 +211,6 @@ public class PlayerController : MonoBehaviour
         fridge.currentObject.transform.parent = null;
         fridge.currentObject.transform.position = fridge.currentObject.transform.position + this.movement.normalized;
         fridge.currentObject.inFridge = false;
-        print(throwVec);
         fridge.currentObject.rb.AddForce(throwVec, ForceMode.Impulse);
 
         fridge.full = false;

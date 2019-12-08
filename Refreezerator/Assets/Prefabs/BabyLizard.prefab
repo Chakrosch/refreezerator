@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 2618939665787838354}
   - component: {fileID: 2765529855342562573}
   - component: {fileID: -4197948900016304735}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BabyLizard
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 7471752756029596006}
   - component: {fileID: 7471752756029596001}
   - component: {fileID: 7471752756029596000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: baby_yoda_complete_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
