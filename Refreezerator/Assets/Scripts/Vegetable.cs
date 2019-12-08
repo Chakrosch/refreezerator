@@ -43,4 +43,9 @@ public class Vegetable : PickUpObject
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+
 }
